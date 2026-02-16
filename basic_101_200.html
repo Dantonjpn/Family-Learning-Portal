@@ -3,754 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>特製：中学英語完成・英検準2級対策 (Part 2: Week 11-20)</title>
+    <title>中学英語完成・英検準2級対策 (Part 2) - 音声付</title>
     <style>
         @page { size: A4; margin: 10mm; }
-        @media print {
-            body { -webkit-print-color-adjust: exact; }
-            .sheet { page-break-after: always; height: 98vh; }
-            .no-print { display: none; }
-        }
-        body {
-            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-            background-color: #eee;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .sheet {
-            background-color: #fff;
-            width: 210mm;
-            min-height: 297mm;
-            padding: 15mm;
-            margin: 0 auto 20px auto;
-            box-sizing: border-box;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h1 {
-            font-size: 14pt;
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
+        @media print { body { -webkit-print-color-adjust: exact; } .sheet { page-break-after: always; height: 98vh; } .no-print { display: none; } }
+        body { font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; background-color: #eee; margin: 0; padding: 20px; color: #333; }
+        .sheet { background-color: #fff; width: 210mm; min-height: 297mm; padding: 15mm; margin: 0 auto 20px auto; box-sizing: border-box; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { font-size: 14pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
         .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
         .theme-title { font-size: 12pt; font-weight: bold; }
         .meta { font-size: 9pt; font-weight: normal; }
-        
-        .row {
-            border-bottom: 1px dotted #ccc;
-            padding: 8px 0;
-            margin-bottom: 4px;
-        }
-        .en {
-            font-family: "Times New Roman", serif;
-            font-size: 13pt;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 3px;
-        }
-        .jp {
-            font-size: 10pt;
-            color: #555;
-            margin-bottom: 3px;
-        }
-        .ref {
-            font-size: 8pt;
-            color: #d35400;
-            text-align: right;
-            display: block;
-        }
-        .grammar-tag {
-            font-size: 8pt;
-            color: #0066cc;
-            background: #eef;
-            padding: 1px 4px;
-            border-radius: 2px;
-            margin-right: 5px;
-        }
-        .advice-box {
-            margin-top: 20px;
-            padding: 12px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 9pt;
-            line-height: 1.6;
-        }
-
-        /* 印刷ボタン */
-        .print-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            background: #27ae60;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-        .print-btn:hover { background: #2ecc71; }
+        .row { border-bottom: 1px dotted #ccc; padding: 8px 0; margin-bottom: 4px; }
+        .en-container { display: flex; align-items: center; justify-content: space-between; }
+        .en { font-family: "Times New Roman", serif; font-size: 13pt; font-weight: bold; color: #000; margin-bottom: 3px; flex-grow: 1; }
+        .jp { font-size: 10pt; color: #555; margin-bottom: 3px; }
+        .ref { font-size: 8pt; color: #d35400; text-align: right; display: block; }
+        .grammar-tag { font-size: 8pt; color: #0066cc; background: #eef; padding: 1px 4px; border-radius: 2px; margin-right: 5px; }
+        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 15pt; color: #27ae60; padding: 0 10px; transition: transform 0.1s; }
+        .speaker-btn:hover { transform: scale(1.2); }
+        .advice-box { margin-top: 20px; padding: 12px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; font-size: 9pt; line-height: 1.6; }
+        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
     </style>
 </head>
 <body>
-
 <button class="print-btn no-print" onclick="window.print()">🖨️ プリントアウト (Week 11-20)</button>
+<script>
+    function speak(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        const uttr = new SpeechSynthesisUtterance();
+        uttr.text = text; uttr.lang = 'en-US'; uttr.rate = 1.1;
+        window.speechSynthesis.cancel(); window.speechSynthesis.speak(uttr);
+    }
+</script>
 
-<!-- Week 11 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 11</span> <span class="theme-title">現在完了形①（完了・経験）</span></div>
-        <span class="meta">範囲：中3 現在完了</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">101 I have finished my homework.</div>
-        <div class="jp">私は / （ちょうど）終えたところです / 私の宿題を</div>
-        <div class="ref"><span class="grammar-tag">[現在完了(完了)]</span> テーマ67 p.148</div>
-    </div>
-    <div class="row">
-        <div class="en">102 I have just eaten lunch.</div>
-        <div class="jp">私は / ちょうど食べたところです / 昼食を</div>
-        <div class="ref"><span class="grammar-tag">[just(ちょうど)]</span> テーマ67 p.148</div>
-    </div>
-    <div class="row">
-        <div class="en">103 He has already gone to bed.</div>
-        <div class="jp">彼は / すでに / 寝てしまいました（行ってしまった）</div>
-        <div class="ref"><span class="grammar-tag">[already(すでに)]</span> テーマ67 p.148</div>
-    </div>
-    <div class="row">
-        <div class="en">104 I have not read this book yet.</div>
-        <div class="jp">私は / まだ読んでいません / この本を</div>
-        <div class="ref"><span class="grammar-tag">[not...yet(まだ)]</span> テーマ68 p.150</div>
-    </div>
-    <div class="row">
-        <div class="en">105 Have you finished your homework yet?</div>
-        <div class="jp">あなたは / もう終えましたか / あなたの宿題を</div>
-        <div class="ref"><span class="grammar-tag">[yet(もう)]</span> テーマ69 p.152</div>
-    </div>
-    <div class="row">
-        <div class="en">106 I have been to Kyoto twice.</div>
-        <div class="jp">私は / 行ったことがあります / 京都へ / 2回</div>
-        <div class="ref"><span class="grammar-tag">[現在完了(経験)]</span> テーマ69(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">107 I have never seen a panda.</div>
-        <div class="jp">私は / 一度も見たことがありません / パンダを</div>
-        <div class="ref"><span class="grammar-tag">[never(一度も～ない)]</span> テーマ68(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">108 Have you ever visited foreign countries?</div>
-        <div class="jp">あなたは / （これまでに）訪れたことがありますか / 外国を</div>
-        <div class="ref"><span class="grammar-tag">[ever(これまでに)]</span> テーマ69 p.152</div>
-    </div>
-    <div class="row">
-        <div class="en">109 She has lost her bag.</div>
-        <div class="jp">彼女は / なくしてしまった（その結果今もない） / 彼女のカバンを</div>
-        <div class="ref"><span class="grammar-tag">[完了(結果)]</span> テーマ67(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">110 I have been to the station to buy a ticket.</div>
-        <div class="jp">私は / 行ってきました（完了） / 駅へ / チケットを買うために</div>
-        <div class="ref"><span class="grammar-tag">[have been to]</span> テーマ71 p.156</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：過去と今をつなぐ</strong><br>
-        現在完了形（have + 過去分詞）は、「過去にしたことが今どうなっているか」を表します。「ちょうど終わった（今スッキリ）」「行ったことがある（今経験がある）」という感覚をつかみましょう。
-    </div>
+    <h1><div><span class="week-label">Week 11</span> <span class="theme-title">現在完了形①（完了・経験）</span></div><span class="meta">No. 101-110</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en101">I have finished my homework.</div><button class="speaker-btn no-print" onclick="speak('en101')">🔊</button></div><div class="jp">私は / （ちょうど）終えたところです / 私の宿題を</div><div class="ref"><span class="grammar-tag">[完了]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en102">I have just eaten lunch.</div><button class="speaker-btn no-print" onclick="speak('en102')">🔊</button></div><div class="jp">私は / ちょうど食べたところです / 昼食を</div><div class="ref"><span class="grammar-tag">[just]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en103">He has already gone to bed.</div><button class="speaker-btn no-print" onclick="speak('en103')">🔊</button></div><div class="jp">彼は / すでに / 寝てしまいました</div><div class="ref"><span class="grammar-tag">[already]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en104">I have not read this book yet.</div><button class="speaker-btn no-print" onclick="speak('en104')">🔊</button></div><div class="jp">私は / まだ読んでいません / この本を</div><div class="ref"><span class="grammar-tag">[not yet]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en105">Have you finished your homework yet?</div><button class="speaker-btn no-print" onclick="speak('en105')">🔊</button></div><div class="jp">あなたは / もう終えましたか / あなたの宿題を</div><div class="ref"><span class="grammar-tag">[疑問のyet]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en106">I have been to Kyoto twice.</div><button class="speaker-btn no-print" onclick="speak('en106')">🔊</button></div><div class="jp">私は / 行ったことがあります / 京都へ / 2回</div><div class="ref"><span class="grammar-tag">[経験]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en107">I have never seen a panda.</div><button class="speaker-btn no-print" onclick="speak('en107')">🔊</button></div><div class="jp">私は / 一度も見たことがありません / パンダを</div><div class="ref"><span class="grammar-tag">[never]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en108">Have you ever visited foreign countries?</div><button class="speaker-btn no-print" onclick="speak('en108')">🔊</button></div><div class="jp">あなたは / 訪れたことがありますか / 外国を</div><div class="ref"><span class="grammar-tag">[ever]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en109">She has lost her bag.</div><button class="speaker-btn no-print" onclick="speak('en109')">🔊</button></div><div class="jp">彼女は / なくしてしまった（今もない）</div><div class="ref"><span class="grammar-tag">[結果]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en110">I have been to the station to buy a ticket.</div><button class="speaker-btn no-print" onclick="speak('en110')">🔊</button></div><div class="jp">私は / 行ってきました / 駅へ</div><div class="ref"><span class="grammar-tag">[have been to]</span></div></div>
 </div>
 
-<!-- Week 12 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 12</span> <span class="theme-title">現在完了形②（継続・進行）</span></div>
-        <span class="meta">範囲：中3 現在完了・進行形</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">111 I have lived in this town for ten years.</div>
-        <div class="jp">私は / ずっと住んでいます / この町に / 10年間</div>
-        <div class="ref"><span class="grammar-tag">[現在完了(継続)]</span> テーマ70 p.154</div>
-    </div>
-    <div class="row">
-        <div class="en">112 She has been busy since last week.</div>
-        <div class="jp">彼女は / ずっと忙しいです / 先週から</div>
-        <div class="ref"><span class="grammar-tag">[since(～から)]</span> テーマ70 p.154</div>
-    </div>
-    <div class="row">
-        <div class="en">113 We have known each other for a long time.</div>
-        <div class="jp">私たちは / ずっと知り合いです / お互いに / 長い間</div>
-        <div class="ref"><span class="grammar-tag">[know(状態動詞)]</span> テーマ70 p.154</div>
-    </div>
-    <div class="row">
-        <div class="en">114 How long have you stayed in Japan?</div>
-        <div class="jp">どのくらい長く / あなたは / 滞在していますか / 日本に</div>
-        <div class="ref"><span class="grammar-tag">[How long]</span> テーマ70 p.154</div>
-    </div>
-    <div class="row">
-        <div class="en">115 It has been raining since yesterday.</div>
-        <div class="jp">（天気）ずっと雨が降っています / 昨日から</div>
-        <div class="ref"><span class="grammar-tag">[現在完了進行形]</span> テーマ95 p.204</div>
-    </div>
-    <div class="row">
-        <div class="en">116 I have been waiting for you for two hours.</div>
-        <div class="jp">私は / ずっと待っています / あなたを / 2時間</div>
-        <div class="ref"><span class="grammar-tag">[現在完了進行形]</span> テーマ95 p.204</div>
-    </div>
-    <div class="row">
-        <div class="en">117 He has been playing soccer since this morning.</div>
-        <div class="jp">彼は / ずっとサッカーをしています / 今朝から</div>
-        <div class="ref"><span class="grammar-tag">[現在完了進行形]</span> テーマ95 p.204</div>
-    </div>
-    <div class="row">
-        <div class="en">118 How long have you been studying English?</div>
-        <div class="jp">どのくらい長く / あなたは / ずっと勉強していますか / 英語を</div>
-        <div class="ref"><span class="grammar-tag">[完了進行形の疑問]</span> テーマ95(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">119 I have wanted a dog for a long time.</div>
-        <div class="jp">私は / ずっと欲しかった / 犬が / 長い間</div>
-        <div class="ref"><span class="grammar-tag">[want(状態動詞)]</span> テーマ70(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">120 The baby has been sleeping for three hours.</div>
-        <div class="jp">その赤ちゃんは / ずっと眠っています / 3時間</div>
-        <div class="ref"><span class="grammar-tag">[現在完了進行形]</span> テーマ95(参考)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：ずっと～している</strong><br>
-        「状態（住んでいる・知っている）」はずっと続くのでhave + 過去分詞。「動作（雨が降る・待つ）」がずっと続いている場合は、have been -ing（現在完了進行形）を使います。
-    </div>
+    <h1><div><span class="week-label">Week 12</span> <span class="theme-title">現在完了形②（継続・進行）</span></div><span class="meta">No. 111-120</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en111">I have lived in this town for ten years.</div><button class="speaker-btn no-print" onclick="speak('en111')">🔊</button></div><div class="jp">私は / ずっと住んでいます / この町に / 10年間</div><div class="ref"><span class="grammar-tag">[継続]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en112">She has been busy since last week.</div><button class="speaker-btn no-print" onclick="speak('en112')">🔊</button></div><div class="jp">彼女は / ずっと忙しいです / 先週から</div><div class="ref"><span class="grammar-tag">[since]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en113">We have known each other for a long time.</div><button class="speaker-btn no-print" onclick="speak('en113')">🔊</button></div><div class="jp">私たちは / ずっと知り合いです / お互いに</div><div class="ref"><span class="grammar-tag">[状態動詞の継続]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en114">How long have you stayed in Japan?</div><button class="speaker-btn no-print" onclick="speak('en114')">🔊</button></div><div class="jp">どのくらい長く / 滞在していますか / 日本に</div><div class="ref"><span class="grammar-tag">[How long]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en115">It has been raining since yesterday.</div><button class="speaker-btn no-print" onclick="speak('en115')">🔊</button></div><div class="jp">ずっと雨が降っています / 昨日から</div><div class="ref"><span class="grammar-tag">[現在完了進行形]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en116">I have been waiting for you for two hours.</div><button class="speaker-btn no-print" onclick="speak('en116')">🔊</button></div><div class="jp">私は / ずっと待っています / あなたを / 2時間</div><div class="ref"><span class="grammar-tag">[現在完了進行形]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en117">He has been playing soccer since this morning.</div><button class="speaker-btn no-print" onclick="speak('en117')">🔊</button></div><div class="jp">彼は / ずっとサッカーをしています / 今朝から</div><div class="ref"><span class="grammar-tag">[現在完了進行形]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en118">How long have you been studying English?</div><button class="speaker-btn no-print" onclick="speak('en118')">🔊</button></div><div class="jp">どのくらい長く / ずっと勉強していますか</div><div class="ref"><span class="grammar-tag">[進行形の疑問]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en119">I have wanted a dog for a long time.</div><button class="speaker-btn no-print" onclick="speak('en119')">🔊</button></div><div class="jp">私は / ずっと欲しかった / 犬が</div><div class="ref"><span class="grammar-tag">[wantの継続]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en120">The baby has been sleeping for three hours.</div><button class="speaker-btn no-print" onclick="speak('en120')">🔊</button></div><div class="jp">その赤ちゃんは / ずっと眠っています / 3時間</div><div class="ref"><span class="grammar-tag">[現在完了進行形]</span></div></div>
 </div>
 
-<!-- Week 13 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 13</span> <span class="theme-title">名詞を詳しくする（分詞）</span></div>
-        <span class="meta">範囲：中3 分詞（後置修飾）</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">121 Look at the running boy.</div>
-        <div class="jp">見なさい / その走っている少年を</div>
-        <div class="ref"><span class="grammar-tag">[現在分詞(前)]</span> テーマ78 p.170</div>
-    </div>
-    <div class="row">
-        <div class="en">122 The girl playing tennis is my sister.</div>
-        <div class="jp">その女の子は / テニスをしている / です / 私の姉（妹）</div>
-        <div class="ref"><span class="grammar-tag">[現在分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">123 Do you know the man standing by the door?</div>
-        <div class="jp">あなたは知っていますか / その男性を / 立っている / ドアのそばに</div>
-        <div class="ref"><span class="grammar-tag">[現在分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">124 Who is the boy swimming in the river?</div>
-        <div class="jp">誰ですか / その少年は / 泳いでいる / 川で</div>
-        <div class="ref"><span class="grammar-tag">[現在分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">125 This is a broken camera.</div>
-        <div class="jp">これは / です / 壊れたカメラ</div>
-        <div class="ref"><span class="grammar-tag">[過去分詞(前)]</span> テーマ78 p.170</div>
-    </div>
-    <div class="row">
-        <div class="en">126 This is a book written by Soseki.</div>
-        <div class="jp">これは / です / 本 / 書かれた / 漱石によって</div>
-        <div class="ref"><span class="grammar-tag">[過去分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">127 I have a bag made in Italy.</div>
-        <div class="jp">私は / 持っています / カバンを / 作られた / イタリアで</div>
-        <div class="ref"><span class="grammar-tag">[過去分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">128 The language spoken in Australia is English.</div>
-        <div class="jp">その言語は / 話されている / オーストラリアで / です / 英語</div>
-        <div class="ref"><span class="grammar-tag">[過去分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">129 Look at the mountain covered with snow.</div>
-        <div class="jp">見なさい / その山を / 覆われている / 雪で</div>
-        <div class="ref"><span class="grammar-tag">[過去分詞(後)]</span> テーマ79 p.172</div>
-    </div>
-    <div class="row">
-        <div class="en">130 That movie was very exciting.</div>
-        <div class="jp">あの映画は / でした / とてもワクワクさせる（興奮させる）</div>
-        <div class="ref"><span class="grammar-tag">[分詞形容詞]</span> テーマ80 p.174</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：後ろから説明する</strong><br>
-        日本語では「走っている少年」と言いますが、英語では「少年・走っている（boy running）」と後ろに置くことが多いです。「～している（ing）」と「～された（過去分詞）」を使い分けましょう。
-    </div>
+    <h1><div><span class="week-label">Week 13</span> <span class="theme-title">名詞を詳しくする（分詞）</span></div><span class="meta">No. 121-130</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en121">Look at the running boy.</div><button class="speaker-btn no-print" onclick="speak('en121')">🔊</button></div><div class="jp">見なさい / その走っている少年を</div><div class="ref"><span class="grammar-tag">[現在分詞(前)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en122">The girl playing tennis is my sister.</div><button class="speaker-btn no-print" onclick="speak('en122')">🔊</button></div><div class="jp">その女の子は / テニスをしている / 私の姉です</div><div class="ref"><span class="grammar-tag">[現在分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en123">Do you know the man standing by the door?</div><button class="speaker-btn no-print" onclick="speak('en123')">🔊</button></div><div class="jp">あなたは知っていますか / 立っている男性を</div><div class="ref"><span class="grammar-tag">[現在分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en124">Who is the boy swimming in the river?</div><button class="speaker-btn no-print" onclick="speak('en124')">🔊</button></div><div class="jp">誰ですか / 泳いでいる少年は</div><div class="ref"><span class="grammar-tag">[現在分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en125">This is a broken camera.</div><button class="speaker-btn no-print" onclick="speak('en125')">🔊</button></div><div class="jp">これは / 壊れたカメラです</div><div class="ref"><span class="grammar-tag">[過去分詞(前)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en126">This is a book written by Soseki.</div><button class="speaker-btn no-print" onclick="speak('en126')">🔊</button></div><div class="jp">これは / 漱石によって書かれた本です</div><div class="ref"><span class="grammar-tag">[過去分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en127">I have a bag made in Italy.</div><button class="speaker-btn no-print" onclick="speak('en127')">🔊</button></div><div class="jp">私は / イタリアで作られたカバンを持っています</div><div class="ref"><span class="grammar-tag">[過去分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en128">The language spoken in Australia is English.</div><button class="speaker-btn no-print" onclick="speak('en128')">🔊</button></div><div class="jp">話されている言語は / です / 英語</div><div class="ref"><span class="grammar-tag">[過去分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en129">Look at the mountain covered with snow.</div><button class="speaker-btn no-print" onclick="speak('en129')">🔊</button></div><div class="jp">見なさい / 雪で覆われた山を</div><div class="ref"><span class="grammar-tag">[過去分詞(後)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en130">That movie was very exciting.</div><button class="speaker-btn no-print" onclick="speak('en130')">🔊</button></div><div class="jp">あの映画は / とてもワクワクさせるものでした</div><div class="ref"><span class="grammar-tag">[感情の分詞]</span></div></div>
 </div>
 
-<!-- Week 14 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 14</span> <span class="theme-title">文で名詞を飾る①（関係代名詞）</span></div>
-        <span class="meta">範囲：中3 関係代名詞(主格・目的格)</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">131 I have a friend who lives in London.</div>
-        <div class="jp">私は / います / 友だちが / （その人は）住んでいる / ロンドンに</div>
-        <div class="ref"><span class="grammar-tag">[主格who]</span> テーマ82(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">132 The man who is standing there is my teacher.</div>
-        <div class="jp">その男性は / （その人は）立っている / そこに / です / 私の先生</div>
-        <div class="ref"><span class="grammar-tag">[主格who]</span> テーマ82(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">133 This is a bus which goes to the airport.</div>
-        <div class="jp">これは / です / バス / （それは）行く / 空港へ</div>
-        <div class="ref"><span class="grammar-tag">[主格which]</span> テーマ82(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">134 I want a robot which can speak English.</div>
-        <div class="jp">私は / 欲しい / ロボットが / （それは）できる / 話す / 英語を</div>
-        <div class="ref"><span class="grammar-tag">[主格which]</span> テーマ82(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">135 This is the song that is popular among young people.</div>
-        <div class="jp">これは / です / 歌 / （それは）人気がある / 若い人々の間で</div>
-        <div class="ref"><span class="grammar-tag">[主格that]</span> テーマ82 p.178</div>
-    </div>
-    <div class="row">
-        <div class="en">136 This is the book that I bought yesterday.</div>
-        <div class="jp">これは / です / 本 / （それを）私が / 買った / 昨日</div>
-        <div class="ref"><span class="grammar-tag">[目的格that]</span> テーマ81 p.176</div>
-    </div>
-    <div class="row">
-        <div class="en">137 The movie which I saw last week was interesting.</div>
-        <div class="jp">その映画は / （それを）私が / 見た / 先週 / でした / 面白い</div>
-        <div class="ref"><span class="grammar-tag">[目的格which]</span> テーマ81(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">138 The cake my mother made is delicious.</div>
-        <div class="jp">そのケーキは / 私の母が / 作った / です / 美味しい</div>
-        <div class="ref"><span class="grammar-tag">[関係代名詞省略]</span> テーマ83 p.180</div>
-    </div>
-    <div class="row">
-        <div class="en">139 This is the present I wanted.</div>
-        <div class="jp">これは / です / プレゼント / 私が / 欲しかった</div>
-        <div class="ref"><span class="grammar-tag">[接触節]</span> テーマ83(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">140 The man I met yesterday was very kind.</div>
-        <div class="jp">その男性は / 私が / 会った / 昨日 / でした / とても親切</div>
-        <div class="ref"><span class="grammar-tag">[接触節(人)]</span> テーマ83(参考)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：説明文をくっつける</strong><br>
-        「友だち（どんな？）→ロンドンに住んでいる」「本（どんな？）→私が昨日買った」のように、名詞の後ろに文をくっつけて詳しく説明します。英検準2級の長文読解で必須のスキルです。
-    </div>
+    <h1><div><span class="week-label">Week 14</span> <span class="theme-title">関係代名詞（主格・目的格）</span></div><span class="meta">No. 131-140</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en131">I have a friend who lives in London.</div><button class="speaker-btn no-print" onclick="speak('en131')">🔊</button></div><div class="jp">私は / ロンドンに住んでいる友だちがいます</div><div class="ref"><span class="grammar-tag">[主格who]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en132">The man who is standing there is my teacher.</div><button class="speaker-btn no-print" onclick="speak('en132')">🔊</button></div><div class="jp">そこに立っている男性は / 私の先生です</div><div class="ref"><span class="grammar-tag">[主格who]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en133">This is a bus which goes to the airport.</div><button class="speaker-btn no-print" onclick="speak('en133')">🔊</button></div><div class="jp">これは / 空港へ行くバスです</div><div class="ref"><span class="grammar-tag">[主格which]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en134">I want a robot which can speak English.</div><button class="speaker-btn no-print" onclick="speak('en134')">🔊</button></div><div class="jp">私は / 英語を話せるロボットが欲しいです</div><div class="ref"><span class="grammar-tag">[主格which]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en135">This is the song that is popular among young people.</div><button class="speaker-btn no-print" onclick="speak('en135')">🔊</button></div><div class="jp">これは / 若者に人気のある歌です</div><div class="ref"><span class="grammar-tag">[主格that]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en136">This is the book that I bought yesterday.</div><button class="speaker-btn no-print" onclick="speak('en136')">🔊</button></div><div class="jp">これは / 私が昨日買った本です</div><div class="ref"><span class="grammar-tag">[目的格that]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en137">The movie which I saw last week was interesting.</div><button class="speaker-btn no-print" onclick="speak('en137')">🔊</button></div><div class="jp">先週私が見た映画は / 面白かったです</div><div class="ref"><span class="grammar-tag">[目的格which]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en138">The cake my mother made is delicious.</div><button class="speaker-btn no-print" onclick="speak('en138')">🔊</button></div><div class="jp">母が作ったケーキは / 美味しいです</div><div class="ref"><span class="grammar-tag">[関係代名詞省略]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en139">This is the present I wanted.</div><button class="speaker-btn no-print" onclick="speak('en139')">🔊</button></div><div class="jp">これは / 私が欲しかったプレゼントです</div><div class="ref"><span class="grammar-tag">[接触節]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en140">The man I met yesterday was very kind.</div><button class="speaker-btn no-print" onclick="speak('en140')">🔊</button></div><div class="jp">昨日私が会った男性は / とても親切でした</div><div class="ref"><span class="grammar-tag">[接触節(人)]</span></div></div>
 </div>
 
-<!-- Week 15 -->
-<div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 15</span> <span class="theme-title">文で名詞を飾る②（関係詞応用）</span></div>
-        <span class="meta">範囲：中3 関係代名詞・関係副詞</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">141 I have a friend whose father is a doctor.</div>
-        <div class="jp">私は / います / 友だちが / （その人の）お父さんが / です / 医者</div>
-        <div class="ref"><span class="grammar-tag">[所有格whose]</span> テーマ98 p.210</div>
-    </div>
-    <div class="row">
-        <div class="en">142 Look at the house whose roof is red.</div>
-        <div class="jp">見なさい / その家を / （その家の）屋根が / です / 赤い</div>
-        <div class="ref"><span class="grammar-tag">[所有格whose]</span> テーマ98(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">143 This is the house where I was born.</div>
-        <div class="jp">これは / です / 家 / （そこで）私が / 生まれた</div>
-        <div class="ref"><span class="grammar-tag">[関係副詞where]</span> テーマ97(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">144 I want to visit the city where he lives.</div>
-        <div class="jp">私は / したい / 訪れる / その都市を / （そこで）彼が / 住んでいる</div>
-        <div class="ref"><span class="grammar-tag">[関係副詞where]</span> テーマ97(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">145 I remember the day when we first met.</div>
-        <div class="jp">私は / 覚えています / その日を / （その時）私たちが / 初めて会った</div>
-        <div class="ref"><span class="grammar-tag">[関係副詞when]</span> テーマ97(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">146 Tell me the reason why you were late.</div>
-        <div class="jp">教えて / 私に / 理由を / （なぜ）あなたが / 遅刻した</div>
-        <div class="ref"><span class="grammar-tag">[関係副詞why]</span> テーマ97(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">147 This is how I made this cake.</div>
-        <div class="jp">これが / です / 方法（どのように） / 私が / 作った / このケーキを</div>
-        <div class="ref"><span class="grammar-tag">[関係副詞how]</span> テーマ97(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">148 What is important is not winning but taking part.</div>
-        <div class="jp">こと（もの） / 重要 / です / 勝つことではなく / しかし / 参加すること</div>
-        <div class="ref"><span class="grammar-tag">[関係代名詞what]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">149 He has two sons, who are doctors.</div>
-        <div class="jp">彼には / います / 二人の息子が / そして彼らは（ちなみに） / です / 医者</div>
-        <div class="ref"><span class="grammar-tag">[継続用法]</span> テーマ99 p.212</div>
-    </div>
-    <div class="row">
-        <div class="en">150 I went to the park, where I played tennis.</div>
-        <div class="jp">私は / 行きました / 公園へ / そしてそこで / 私は / しました / テニスを</div>
-        <div class="ref"><span class="grammar-tag">[継続用法]</span> テーマ99(参考)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：場所・時・理由の説明</strong><br>
-        「～する場所（where）」「～する時（when）」「～する理由（why）」はセットで覚えましょう。関係代名詞のwhose（～の〇〇が…である人/物）も英検によく出ます。
-    </div>
+    <div class="sheet">
+    <h1><div><span class="week-label">Week 15</span> <span class="theme-title">第4文型(SVOO)・第5文型(SVOC)</span></div><span class="meta">No. 141-150</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en141">My uncle gave me this watch.</div><button class="speaker-btn no-print" onclick="speak('en141')">🔊</button></div><div class="jp">私の叔父は / くれました / 私に / この時計を</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en142">I will show you some pictures tomorrow.</div><button class="speaker-btn no-print" onclick="speak('en142')">🔊</button></div><div class="jp">私は / 見せるつもりです / あなたに / 何枚かの写真を / 明日</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en143">Please tell me the way to the station.</div><button class="speaker-btn no-print" onclick="speak('en143')">🔊</button></div><div class="jp">どうか / 教えてください / 私に / 道を / 駅への</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en144">He bought his daughter a new doll.</div><button class="speaker-btn no-print" onclick="speak('en144')">🔊</button></div><div class="jp">彼は / 買い（与え）ました / 彼の娘に / 新しい人形を</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en145">We call that dog Shiro.</div><button class="speaker-btn no-print" onclick="speak('en145')">🔊</button></div><div class="jp">私たちは / 呼びます / あの犬を / シロと</div><div class="ref"><span class="grammar-tag">[SVOC(名詞)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en146">This music makes me happy.</div><button class="speaker-btn no-print" onclick="speak('en146')">🔊</button></div><div class="jp">この音楽は / します / 私を / 幸せな気分に</div><div class="ref"><span class="grammar-tag">[SVOC(形容詞)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en147">Keep the room clean.</div><button class="speaker-btn no-print" onclick="speak('en147')">🔊</button></div><div class="jp">しておきなさい / 部屋を / きれいな状態に</div><div class="ref"><span class="grammar-tag">[SVOC(維持)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en148">I found the book easy.</div><button class="speaker-btn no-print" onclick="speak('en148')">🔊</button></div><div class="jp">私は / わかりました / その本が / 簡単だと</div><div class="ref"><span class="grammar-tag">[SVOC(判断)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en149">They named the baby Hana.</div><button class="speaker-btn no-print" onclick="speak('en149')">🔊</button></div><div class="jp">彼らは / 名付けました / その赤ちゃんを / ハナと</div><div class="ref"><span class="grammar-tag">[SVOC(命名)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en150">He left the window open.</div><button class="speaker-btn no-print" onclick="speak('en150')">🔊</button></div><div class="jp">彼は / 放置しました / 窓を / 開いたままに</div><div class="ref"><span class="grammar-tag">[SVOC(放置)]</span></div></div>
 </div>
 
-<!-- Week 16 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 16</span> <span class="theme-title">疑問文を文の中に埋め込む</span></div>
-        <span class="meta">範囲：中3 間接疑問文</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">151 I don't know where he lives.</div>
-        <div class="jp">私は / 知りません / どこに / 彼が / 住んでいるか</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/where]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">152 Do you know who that girl is?</div>
-        <div class="jp">あなたは / 知っていますか / 誰か / あの女の子が / です（あるか）</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/who]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">153 I wonder why she is crying.</div>
-        <div class="jp">私は / かなと思う（不思議だ） / なぜ / 彼女が / 泣いているのか</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/why]</span> テーマ84 p.182</div>
-    </div>
-    <div class="row">
-        <div class="en">154 Please tell me what you want.</div>
-        <div class="jp">教えてください / 私に / 何を / あなたが / 欲しいか</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/what]</span> テーマ85 p.184</div>
-    </div>
-    <div class="row">
-        <div class="en">155 Do you know when the bus comes?</div>
-        <div class="jp">あなたは / 知っていますか / いつ / バスが / 来るか</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/when]</span> テーマ86 p.186</div>
-    </div>
-    <div class="row">
-        <div class="en">156 I don't know what is in this box.</div>
-        <div class="jp">私は / 知りません / 何が / 入っているか（あるか） / この箱に</div>
-        <div class="ref"><span class="grammar-tag">[疑問詞が主語]</span> テーマ85 p.184</div>
-    </div>
-    <div class="row">
-        <div class="en">157 Ask him where he went yesterday.</div>
-        <div class="jp">たずねなさい / 彼に / どこへ / 彼が / 行ったか / 昨日</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/過去]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">158 Please tell me how old you are.</div>
-        <div class="jp">教えてください / 私に / 何歳 / あなたが / です（あるか）</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/How]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">159 I want to know what time it is now.</div>
-        <div class="jp">私は / したい / 知る / 何時 / それが（時間） / です（あるか） / 今</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/What time]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">160 Do you think (that) he will come?</div>
-        <div class="jp">あなたは / 思いますか / （ということ） / 彼が / 来るだろうと</div>
-        <div class="ref"><span class="grammar-tag">[接続詞thatの疑問]</span> テーマ86(参考)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：疑問詞＋主語＋動詞</strong><br>
-        「彼はどこに住んでいますか？(Where does he live?)」を「彼がどこに住んでいるか知ってる？」と言うときは、語順が「疑問詞＋主語＋動詞(where he lives)」に戻ります。
-    </div>
+    <h1><div><span class="week-label">Week 16</span> <span class="theme-title">It is ... for ... to ～ / 間接疑問</span></div><span class="meta">No. 151-160</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en151">It is important to read many books.</div><button class="speaker-btn no-print" onclick="speak('en151')">🔊</button></div><div class="jp">（それは）大切です / 読むことは / たくさんの本を</div><div class="ref"><span class="grammar-tag">[It...to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en152">It is easy for him to solve the problem.</div><button class="speaker-btn no-print" onclick="speak('en152')">🔊</button></div><div class="jp">（それは）簡単です / 彼にとって / 解くことは / その問題を</div><div class="ref"><span class="grammar-tag">[It for to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en153">It is difficult for me to speak French.</div><button class="speaker-btn no-print" onclick="speak('en153')">🔊</button></div><div class="jp">（それは）難しいです / 私にとって / 話すことは / フランス語を</div><div class="ref"><span class="grammar-tag">[It for to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en154">I don't know where she lives.</div><button class="speaker-btn no-print" onclick="speak('en154')">🔊</button></div><div class="jp">私は / 知りません / どこに / 彼女が住んでいるか</div><div class="ref"><span class="grammar-tag">[間接疑問(場所)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en155">Do you know what he wants?</div><button class="speaker-btn no-print" onclick="speak('en155')">🔊</button></div><div class="jp">あなたは / 知っていますか / 何を / 彼が欲しがっているか</div><div class="ref"><span class="grammar-tag">[間接疑問(物)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en156">Please tell me when the movie starts.</div><button class="speaker-btn no-print" onclick="speak('en156')">🔊</button></div><div class="jp">どうか / 教えてください / いつ / 映画が始まるか</div><div class="ref"><span class="grammar-tag">[間接疑問(時)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en157">I want to know why she is crying.</div><button class="speaker-btn no-print" onclick="speak('en157')">🔊</button></div><div class="jp">私は / 知りたい / なぜ / 彼女が泣いているのか</div><div class="ref"><span class="grammar-tag">[間接疑問(理由)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en158">Can you tell me who that man is?</div><button class="speaker-btn no-print" onclick="speak('en158')">🔊</button></div><div class="jp">教えてもらえますか / 誰 / あの男が</div><div class="ref"><span class="grammar-tag">[間接疑問(人)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en159">I don't know if he will come.</div><button class="speaker-btn no-print" onclick="speak('en159')">🔊</button></div><div class="jp">私は / わかりません / かどうか / 彼が来るか</div><div class="ref"><span class="grammar-tag">[if(〜かどうか)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en160">I'm not sure if I can do it.</div><button class="speaker-btn no-print" onclick="speak('en160')">🔊</button></div><div class="jp">私は / 確信がありません / かどうか / 私がそれをできるか</div><div class="ref"><span class="grammar-tag">[if(〜かどうか)]</span></div></div>
 </div>
 
-<!-- Week 17 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 17</span> <span class="theme-title">もしも～なら（仮定法）</span></div>
-        <span class="meta">範囲：中3～高1 仮定法</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">161 I wish I were a bird.</div>
-        <div class="jp">私は / 願う（ならいいのに） / 私が / だった（ならば） / 鳥</div>
-        <div class="ref"><span class="grammar-tag">[仮定法過去/I wish]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">162 If I had time, I could go with you.</div>
-        <div class="jp">もし / 私が / 持っていたら / 時間を / 私は / できるのに / 行く / あなたと</div>
-        <div class="ref"><span class="grammar-tag">[仮定法過去]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">163 If I were you, I would buy it.</div>
-        <div class="jp">もし / 私が / だったなら / あなた / 私は / （だろうに） / 買う / それを</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/助言]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">164 I wish I could speak English better.</div>
-        <div class="jp">私は / 願う（ならいいのに） / 私が / できる（ならば） / 話す / 英語を / もっと上手に</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/能力]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">165 If it were sunny, we could play baseball.</div>
-        <div class="jp">もし / それが（天気） / だったなら / 晴れ / 私たちは / できるのに / する / 野球を</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/be動詞]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">166 Without water, we could not live.</div>
-        <div class="jp">～がなければ / 水 / 私たちは / できないだろう / 生きる</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/Without]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">167 I wish I knew his phone number.</div>
-        <div class="jp">私は / 願う（ならいいのに） / 私が / 知っていたら / 彼の電話番号を</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/know]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">168 It is time you went to bed.</div>
-        <div class="jp">それは / 時間です（もう～してもよい頃だ） / あなたが / 行った（行く） / 寝に</div>
-        <div class="ref"><span class="grammar-tag">[仮定法/It is time]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">169 If I had enough money, I would buy a car.</div>
-        <div class="jp">もし / 私が / 持っていたら / 十分なお金を / 私は / 買うだろうに / 車を</div>
-        <div class="ref"><span class="grammar-tag">[仮定法過去]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">170 I felt as if I were in a dream.</div>
-        <div class="jp">私は / 感じた / まるで～のように / 私が / いる / 夢の中に</div>
-        <div class="ref"><span class="grammar-tag">[as if]</span> (補足)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：現実ではない話</strong><br>
-        「もし（今）～なら」という、現実とは違う想像をするときは、動詞を「過去形」にします。これを仮定法過去といいます。be動詞は主語に関わらず「were」を使うのが基本です。
-    </div>
+    <h1><div><span class="week-label">Week 17</span> <span class="theme-title">疑問詞 + to ～ / 付加疑問・否定疑問</span></div><span class="meta">No. 161-170</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en161">I don't know what to do.</div><button class="speaker-btn no-print" onclick="speak('en161')">🔊</button></div><div class="jp">私は / 知りません / 何をすべきか</div><div class="ref"><span class="grammar-tag">[what to do]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en162">Please tell me how to get to the library.</div><button class="speaker-btn no-print" onclick="speak('en162')">🔊</button></div><div class="jp">どうか / 教えてください / 行き方を / 図書館への</div><div class="ref"><span class="grammar-tag">[how to get]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en163">I haven't decided where to go on vacation.</div><button class="speaker-btn no-print" onclick="speak('en163')">🔊</button></div><div class="jp">私は / まだ決めていません / どこへ行くべきか / 休暇に</div><div class="ref"><span class="grammar-tag">[where to go]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en164">It's cold today, isn't it?</div><button class="speaker-btn no-print" onclick="speak('en164')">🔊</button></div><div class="jp">今日は / 寒いですね / そうではありませんか</div><div class="ref"><span class="grammar-tag">[付加疑問]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en165">You like soccer, don't you?</div><button class="speaker-btn no-print" onclick="speak('en165')">🔊</button></div><div class="jp">あなたは / サッカーが好きですね / そうではありませんか</div><div class="ref"><span class="grammar-tag">[付加疑問]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en166">Ken can swim well, can't he?</div><button class="speaker-btn no-print" onclick="speak('en166')">🔊</button></div><div class="jp">ケンは / 泳げます / 上手に / そうではありませんか</div><div class="ref"><span class="grammar-tag">[付加疑問]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en167">Don't you have a camera?</div><button class="speaker-btn no-print" onclick="speak('en167')">🔊</button></div><div class="jp">あなたは / 持っていないのですか / カメラを</div><div class="ref"><span class="grammar-tag">[否定疑問文]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en168">Can't you play the piano?</div><button class="speaker-btn no-print" onclick="speak('en168')">🔊</button></div><div class="jp">あなたは / 弾けないのですか / ピアノを</div><div class="ref"><span class="grammar-tag">[否定疑問文]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en169">Yes, I can.</div><button class="speaker-btn no-print" onclick="speak('en169')">🔊</button></div><div class="jp">（弾けないの？に対し）いいえ、弾けます</div><div class="ref"><span class="grammar-tag">[否定疑問の答]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en170">No, I can't.</div><button class="speaker-btn no-print" onclick="speak('en170')">🔊</button></div><div class="jp">（弾けないの？に対し）はい、弾けません</div><div class="ref"><span class="grammar-tag">[否定疑問の答]</span></div></div>
 </div>
 
-<!-- Week 18 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 18</span> <span class="theme-title">いろいろな構文①（so that, too to）</span></div>
-        <span class="meta">範囲：中3 構文・熟語</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">171 I am so tired that I cannot run.</div>
-        <div class="jp">私は / です / とても疲れている / （その結果）～ほど / 私が / できない / 走る</div>
-        <div class="ref"><span class="grammar-tag">[so...that...]</span> テーマ75(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">172 This box is too heavy for me to carry.</div>
-        <div class="jp">この箱は / です / あまりに重い / 私にとって / 運ぶには（運べない）</div>
-        <div class="ref"><span class="grammar-tag">[too...to...]</span> テーマ75 p.164</div>
-    </div>
-    <div class="row">
-        <div class="en">173 He got up early so that he could catch the train.</div>
-        <div class="jp">彼は / 起きた / 早く / ～するために（目的） / 彼が / できるように / 乗る / 電車に</div>
-        <div class="ref"><span class="grammar-tag">[so that.../目的]</span> テーマ75(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">174 The book was easy enough for him to read.</div>
-        <div class="jp">その本は / でした / 十分簡単な / 彼にとって / 読むには（読めた）</div>
-        <div class="ref"><span class="grammar-tag">[...enough to]</span> テーマ76 p.166</div>
-    </div>
-    <div class="row">
-        <div class="en">175 Not only children but also adults like this anime.</div>
-        <div class="jp">～だけでなく / 子供たち / しかしまた（～も） / 大人たちも / 好き / このアニメが</div>
-        <div class="ref"><span class="grammar-tag">[not only...but also]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">176 Both my father and I like baseball.</div>
-        <div class="jp">両方とも / 私の父と / そして / 私 / 好き / 野球が</div>
-        <div class="ref"><span class="grammar-tag">[both A and B]</span> テーマ41(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">177 Either you or I have to go there.</div>
-        <div class="jp">どちらか / あなた / または / 私が / しなければならない / 行く / そこへ</div>
-        <div class="ref"><span class="grammar-tag">[either A or B]</span> テーマ41(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">178 Neither he nor she knows the truth.</div>
-        <div class="jp">どちらも～ない / 彼 / も / 彼女も / 知らない / 真実を</div>
-        <div class="ref"><span class="grammar-tag">[neither A nor B]</span> テーマ41(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">179 The more you learn, the more you know.</div>
-        <div class="jp">～すればするほど / あなたが / 学ぶ / ますます～する / あなたが / 知る</div>
-        <div class="ref"><span class="grammar-tag">[The 比較, the 比較]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">180 As soon as he arrived, he called me.</div>
-        <div class="jp">～するとすぐに / 彼が / 到着した / 彼は / 電話した / 私に</div>
-        <div class="ref"><span class="grammar-tag">[as soon as]</span> (補足)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：接続詞のようなセット</strong><br>
-        「so... that...（とても～なので…だ）」「not only A but also B（AだけでなくBも）」のようなセットの表現は、長文読解で文の構造を見抜くために非常に重要です。
-    </div>
+    <h1><div><span class="week-label">Week 18</span> <span class="theme-title">感嘆文・命令文・重要構文</span></div><span class="meta">No. 171-180</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en171">What a beautiful flower this is!</div><button class="speaker-btn no-print" onclick="speak('en171')">🔊</button></div><div class="jp">なんて / 美しい花でしょう / これは</div><div class="ref"><span class="grammar-tag">[感嘆文(What)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en172">How fast he runs!</div><button class="speaker-btn no-print" onclick="speak('en172')">🔊</button></div><div class="jp">なんて / 速く / 彼は走るのでしょう</div><div class="ref"><span class="grammar-tag">[感嘆文(How)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en173">How kind you are!</div><button class="speaker-btn no-print" onclick="speak('en173')">🔊</button></div><div class="jp">あなたは / なんて親切なのでしょう</div><div class="ref"><span class="grammar-tag">[感嘆文(How)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en174">Be careful!</div><button class="speaker-btn no-print" onclick="speak('en174')">🔊</button></div><div class="jp">注意しなさい</div><div class="ref"><span class="grammar-tag">[命令文]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en175">Don't be late for school.</div><button class="speaker-btn no-print" onclick="speak('en175')">🔊</button></div><div class="jp">遅れてはいけません / 学校に</div><div class="ref"><span class="grammar-tag">[否定命令文]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en176">Let's go to the park.</div><button class="speaker-btn no-print" onclick="speak('en176')">🔊</button></div><div class="jp">行きましょう / 公園へ</div><div class="ref"><span class="grammar-tag">[勧誘]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en177">There is a cat under the chair.</div><button class="speaker-btn no-print" onclick="speak('en177')">🔊</button></div><div class="jp">います / 猫が / イスの下に</div><div class="ref"><span class="grammar-tag">[There is]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en178">There are many stars in the sky.</div><button class="speaker-btn no-print" onclick="speak('en178')">🔊</button></div><div class="jp">あります / たくさんの星が / 空に</div><div class="ref"><span class="grammar-tag">[There are]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en179">Was there a library in this town?</div><button class="speaker-btn no-print" onclick="speak('en179')">🔊</button></div><div class="jp">ありましたか / 図書館が / この町に</div><div class="ref"><span class="grammar-tag">[There was]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en180">I'm too tired to walk.</div><button class="speaker-btn no-print" onclick="speak('en180')">🔊</button></div><div class="jp">私は / 疲れすぎています / 歩くには</div><div class="ref"><span class="grammar-tag">[too...to]</span></div></div>
 </div>
 
-<!-- Week 19 -->
-<div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 19</span> <span class="theme-title">いろいろな構文②（It seemsなど）</span></div>
-        <span class="meta">範囲：英検準2級 重要表現</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">181 It seems that he is busy now.</div>
-        <div class="jp">それは～のようだ / （ということ） / 彼は / です / 忙しい / 今</div>
-        <div class="ref"><span class="grammar-tag">[It seems that]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">182 He seems to be busy now.</div>
-        <div class="jp">彼は / ～のように見える / である / 忙しい / 今</div>
-        <div class="ref"><span class="grammar-tag">[S seems to do]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">183 It is said that Japanese food is healthy.</div>
-        <div class="jp">それは / 言われています / （ということ） / 日本食は / 健康的だ</div>
-        <div class="ref"><span class="grammar-tag">[It is said that]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">184 She is said to be a genius.</div>
-        <div class="jp">彼女は / 言われています / であると / 天才</div>
-        <div class="ref"><span class="grammar-tag">[S is said to do]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">185 It is likely to rain tomorrow.</div>
-        <div class="jp">それは / ありそうだ（～しそうだ） / 雨が降る / 明日</div>
-        <div class="ref"><span class="grammar-tag">[be likely to]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">186 I managed to finish the work.</div>
-        <div class="jp">私は / なんとか～した / 終える（こと） / その仕事を</div>
-        <div class="ref"><span class="grammar-tag">[manage to]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">187 No matter what happens, I will go there.</div>
-        <div class="jp">たとえ何が / 起ころうとも / 私は / つもりです / 行く / そこへ</div>
-        <div class="ref"><span class="grammar-tag">[No matter what]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">188 Whenever I visit him, he is studying.</div>
-        <div class="jp">～するときはいつでも / 私が / 訪ねる / 彼を / 彼は / 勉強している</div>
-        <div class="ref"><span class="grammar-tag">[Whenever]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">189 I used to play tennis.</div>
-        <div class="jp">私は / かつてよく～した / する / テニスを</div>
-        <div class="ref"><span class="grammar-tag">[used to]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">190 You had better go to the doctor.</div>
-        <div class="jp">あなたは / ～したほうがよい（しなさい） / 行く / 医者へ</div>
-        <div class="ref"><span class="grammar-tag">[had better]</span> (補足)</div>
-    </div>
-
-    <div class="advice-box">
-        <strong>★今週のトレーニング：書き換え表現</strong><br>
-        It seems that... は S seems to... に書き換えられます。「～のようだ」「～と言われている」という客観的な表現は、ニュースや説明文でよく使われます。
-    </div>
+    <div class="sheet">
+    <h1><div><span class="week-label">Week 19</span> <span class="theme-title">重要構文・熟語(1)</span></div><span class="meta">No. 181-190</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en181">He is old enough to drive a car.</div><button class="speaker-btn no-print" onclick="speak('en181')">🔊</button></div><div class="jp">彼は / 十分な年齢です / 運転するのに / 車を</div><div class="ref"><span class="grammar-tag">[enough to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en182">This book is too difficult for me to read.</div><button class="speaker-btn no-print" onclick="speak('en182')">🔊</button></div><div class="jp">この本は / 難しすぎます / 私が読むには</div><div class="ref"><span class="grammar-tag">[too...for...to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en183">I want you to help me with my homework.</div><button class="speaker-btn no-print" onclick="speak('en183')">🔊</button></div><div class="jp">私は / あなたに〜してほしい / 助ける（ことを） / 私を</div><div class="ref"><span class="grammar-tag">[want 人 to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en184">Tell me what happened there.</div><button class="speaker-btn no-print" onclick="speak('en184')">🔊</button></div><div class="jp">教えてください / 何が起きたか / そこで</div><div class="ref"><span class="grammar-tag">[間接疑問(主語)]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en185">I'll do my best to pass the exam.</div><button class="speaker-btn no-print" onclick="speak('en185')">🔊</button></div><div class="jp">私は / 最善を尽くすつもりです / 合格するために</div><div class="ref"><span class="grammar-tag">[do one's best]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en186">He is one of the most famous singers.</div><button class="speaker-btn no-print" onclick="speak('en186')">🔊</button></div><div class="jp">彼は / 一人です / 最も有名な歌手の</div><div class="ref"><span class="grammar-tag">[one of the 最上級]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en187">I enjoyed talking with you.</div><button class="speaker-btn no-print" onclick="speak('en187')">🔊</button></div><div class="jp">私は / 楽しみました / 話すことを / あなたと</div><div class="ref"><span class="grammar-tag">[enjoy + ing]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en188">We had a good time at the party.</div><button class="speaker-btn no-print" onclick="speak('en188')">🔊</button></div><div class="jp">私たちは / 過ごしました / 楽しい時間を / パーティーで</div><div class="ref"><span class="grammar-tag">[have a good time]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en189">I'm looking forward to seeing you.</div><button class="speaker-btn no-print" onclick="speak('en189')">🔊</button></div><div class="jp">私は / 楽しみにしています / 会えることを / あなたに</div><div class="ref"><span class="grammar-tag">[look forward to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en190">Would you like another cup of tea?</div><button class="speaker-btn no-print" onclick="speak('en190')">🔊</button></div><div class="jp">いかがですか / もう一杯の紅茶は</div><div class="ref"><span class="grammar-tag">[Would you like]</span></div></div>
 </div>
 
-<!-- Week 20 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 20</span> <span class="theme-title">総仕上げ：英検準2級レベル</span></div>
-        <span class="meta">範囲：総合演習・長文読解</span>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="en">191 According to the news, the typhoon is coming.</div>
-        <div class="jp">～によると / そのニュース / 台風が / 近づいている（来ている）</div>
-        <div class="ref"><span class="grammar-tag">[According to]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">192 In spite of the rain, they continued the game.</div>
-        <div class="jp">～にもかかわらず / 雨 / 彼らは / 続けた / その試合を</div>
-        <div class="ref"><span class="grammar-tag">[In spite of]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">193 Because of the bad weather, the train stopped.</div>
-        <div class="jp">～のために（せいで） / 悪い天気 / 電車は / 止まった</div>
-        <div class="ref"><span class="grammar-tag">[Because of]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">194 Instead of studying, he played video games.</div>
-        <div class="jp">～の代わりに / 勉強すること / 彼は / しました / テレビゲームを</div>
-        <div class="ref"><span class="grammar-tag">[Instead of]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">195 Thanks to your help, I could pass the exam.</div>
-        <div class="jp">～のおかげで / あなたの助け / 私は / できた / 合格する / 試験に</div>
-        <div class="ref"><span class="grammar-tag">[Thanks to]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">196 The man whom I met yesterday is a doctor.</div>
-        <div class="jp">その男性は / （その人に）私が / 会った / 昨日 / です / 医者</div>
-        <div class="ref"><span class="grammar-tag">[関係代名詞whom]</span> テーマ81(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">197 The problem is that we don't have enough money.</div>
-        <div class="jp">問題は / です / （ということ） / 私たちが / 持っていない / 十分なお金を</div>
-        <div class="ref"><span class="grammar-tag">[SVO(that節)]</span> テーマ43(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">198 Would you mind opening the window?</div>
-        <div class="jp">（気にしますか）してくれませんか / 開けることを / 窓を</div>
-        <div class="ref"><span class="grammar-tag">[Would you mind...]</span> (補足)</div>
-    </div>
-    <div class="row">
-        <div class="en">199 Could you tell me where the station is?</div>
-        <div class="jp">教えてくれませんか / 私に / どこに / 駅が / あるか</div>
-        <div class="ref"><span class="grammar-tag">[間接疑問/丁寧]</span> テーマ84(参考)</div>
-    </div>
-    <div class="row">
-        <div class="en">200 I hope that your dream will come true.</div>
-        <div class="jp">私は / 望みます / （ということ） / あなたの夢が / なる（実現する） / 本当に</div>
-        <div class="ref"><span class="grammar-tag">[I hope that]</span> テーマ43(参考)</div>
-    </div>
+    <h1><div><span class="week-label">Week 20</span> <span class="theme-title">重要構文・熟語(2)</span></div><span class="meta">No. 191-200</span></h1>
+    <div class="row"><div class="en-container"><div class="en" id="en191">I don't know how to use this machine.</div><button class="speaker-btn no-print" onclick="speak('en191')">🔊</button></div><div class="jp">私は / 知りません / 使い方を / この機械の</div><div class="ref"><span class="grammar-tag">[how to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en192">I'm sorry I'm late.</div><button class="speaker-btn no-print" onclick="speak('en192')">🔊</button></div><div class="jp">ごめんなさい / 遅れて</div><div class="ref"><span class="grammar-tag">[that節の省略]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en193">I hope that it will be sunny tomorrow.</div><button class="speaker-btn no-print" onclick="speak('en193')">🔊</button></div><div class="jp">私は / 望んでいます / 晴れることを / 明日</div><div class="ref"><span class="grammar-tag">[hope that]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en194">I think that this book is useful.</div><button class="speaker-btn no-print" onclick="speak('en194')">🔊</button></div><div class="jp">私は / 思います / この本は / 役に立つと</div><div class="ref"><span class="grammar-tag">[think that]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en195">It takes about an hour to go there.</div><button class="speaker-btn no-print" onclick="speak('en195')">🔊</button></div><div class="jp">（時間は）かかります / 約1時間 / そこへ行くのに</div><div class="ref"><span class="grammar-tag">[It takes...to]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en196">English is not easy, but it's fun.</div><button class="speaker-btn no-print" onclick="speak('en196')">🔊</button></div><div class="jp">英語は / 簡単ではありません / しかし / それは楽しいです</div><div class="ref"><span class="grammar-tag">[等位接続詞]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en197">He is not only kind but also smart.</div><button class="speaker-btn no-print" onclick="speak('en197')">🔊</button></div><div class="jp">彼は / 親切なだけでなく / 賢くもあります</div><div class="ref"><span class="grammar-tag">[not only...but also]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en198">Either you or he has to go.</div><button class="speaker-btn no-print" onclick="speak('en198')">🔊</button></div><div class="jp">あなたか彼の / どちらかが / 行かなければなりません</div><div class="ref"><span class="grammar-tag">[either or]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en199">Both Ken and I are students.</div><button class="speaker-btn no-print" onclick="speak('en199')">🔊</button></div><div class="jp">ケンと私の / 両方が / です / 学生</div><div class="ref"><span class="grammar-tag">[both and]</span></div></div>
+    <div class="row"><div class="en-container"><div class="en" id="en200">I have been busy since this morning.</div><button class="speaker-btn no-print" onclick="speak('en200')">🔊</button></div><div class="jp">私は / ずっと忙しいです / 今朝から</div><div class="ref"><span class="grammar-tag">[現在完了(継続)]</span></div></div>
 
     <div class="advice-box">
-        <strong>★Part 2 修了おめでとう！</strong><br>
-        これで中学英語の全範囲と、英検準2級合格に必要な重要表現200文をすべてカバーしました。この200文がスラスラ言えれば、高校入試も英検準2級も、自信を持って挑めます。何度も「口に出して」練習してください！
+        <strong>1.1倍速・Part 2 完了！</strong><br>
+        No.101から200まで、すべての音声機能が追加されました。これらは「英語の骨格」となる重要な文ばかりです。1.1倍速でスラスラ聴き取れるようになれば、英検準2級レベルの基礎力は確固たるものになります。
     </div>
 </div>
 
