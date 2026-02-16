@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英検準1級：音声付き基礎構文ドリル (Week 21)</title>
+    <style>
+        /* 既存のスタイルを継承 */
+        @page { size: A4; margin: 10mm; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; }
+            .sheet { page-break-after: always; height: 98vh; }
+            .no-print { display: none; }
+        }
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            background-color: #eee;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .sheet {
+            background-color: #fff;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            margin: 0 auto 20px auto;
+            box-sizing: border-box;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 14pt;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
+        .theme-title { font-size: 12pt; font-weight: bold; }
+        .meta { font-size: 9pt; font-weight: normal; }
+        .row { border-bottom: 1px dotted #ccc; padding: 8px 0; margin-bottom: 4px; position: relative; }
+        .en-container { display: flex; align-items: center; justify-content: space-between; }
+        .en { font-family: "Times New Roman", serif; font-size: 13pt; font-weight: bold; color: #000; margin-bottom: 3px; flex-grow: 1; }
+        .jp { font-size: 10pt; color: #555; margin-bottom: 3px; }
+        .ref { font-size: 8pt; color: #d35400; text-align: right; display: block; }
+        .grammar-tag { font-size: 8pt; color: #0066cc; background: #eef; padding: 1px 4px; border-radius: 2px; margin-right: 5px; }
+        
+        /* 音声ボタンのスタイル */
+        .speaker-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16pt;
+            padding: 0 10px;
+            color: #27ae60;
+            transition: transform 0.1s;
+        }
+        .speaker-btn:hover { transform: scale(1.2); color: #2ecc71; }
+        .speaker-btn:active { transform: scale(0.9); }
+
+        .advice-box { margin-top: 20px; padding: 12px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; font-size: 9pt; line-height: 1.6; }
+        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); z-index: 1000; }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ プリントアウト (Week 21)</button>
+
+<div class="sheet">
+    <h1>
+        <div><span class="week-label">Week 21</span> <span class="theme-title">英検準1級：基礎構文（音声付き）</span></div>
+        <span class="meta">範囲：完了受動態・無生物主語</span>
+    </h1>
+    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en201">The plan has been carefully considered by many experts.</div>
+            <button class="speaker-btn no-print" onclick="speak('en201')">🔊</button>
+        </div>
+        <div class="jp">その計画は / されてきました / 注意深く / 検討（することを） / 多くの専門家によって</div>
+        <div class="ref"><span class="grammar-tag">[完了受動態]</span> 継続的な状態</div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en202">He has been said to be suitable for the position.</div>
+            <button class="speaker-btn no-print" onclick="speak('en202')">🔊</button>
+        </div>
+        <div class="jp">彼は / 言われ続けています / （ということ）を / ふさわしいと / その地位に</div>
+        <div class="ref"><span class="grammar-tag">[It is saidの完了形]</span> 客観的な評価</div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en203">Latest technology enables us to talk to distant people.</div>
+            <button class="speaker-btn no-print" onclick="speak('en203')">🔊</button>
+        </div>
+        <div class="jp">最新の技術は / 可能にします / 私たちが / 話すことを / 遠くの人と</div>
+        <div class="ref"><span class="grammar-tag">[無生物主語 enable]</span> 因果関係</div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en204">Heavy rain prevented us from arriving on time.</div>
+            <button class="speaker-btn no-print" onclick="speak('en204')">🔊</button>
+        </div>
+        <div class="jp">大雨が / 妨げました / 私たちが / 到着することから / 時間通りに</div>
+        <div class="ref"><span class="grammar-tag">[prevent O from -ing]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en205">She became a doctor, which had been her dream.</div>
+            <button class="speaker-btn no-print" onclick="speak('en205')">🔊</button>
+        </div>
+        <div class="jp">彼女はなりました / 医者に / そしてそれは / ありました / 彼女の夢で</div>
+        <div class="ref"><span class="grammar-tag">[関係詞非制限用法]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en206">I apologized to him, which made him even angrier.</div>
+            <button class="speaker-btn no-print" onclick="speak('en206')">🔊</button>
+        </div>
+        <div class="jp">私は謝りました / 彼に / そしてそれが / しました / 彼を / さらに怒った状態に</div>
+        <div class="ref"><span class="grammar-tag">[前文の内容を補足]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en207">Having finished my homework, I started watching TV.</div>
+            <button class="speaker-btn no-print" onclick="speak('en207')">🔊</button>
+        </div>
+        <div class="jp">（し終えたので）終えた状態で / 私の宿題を / 私は / 始めました / 観ることを</div>
+        <div class="ref"><span class="grammar-tag">[完了分詞構文]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en208">Not knowing what to say, he just stood there.</div>
+            <button class="speaker-btn no-print" onclick="speak('en208')">🔊</button>
+        </div>
+        <div class="jp">知らなかったので / 何を言うべきかを / 彼は / ただ / 立っていました</div>
+        <div class="ref"><span class="grammar-tag">[分詞構文の否定]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en209">I will not sign this contract unless you agree.</div>
+            <button class="speaker-btn no-print" onclick="speak('en209')">🔊</button>
+        </div>
+        <div class="jp">私は署名しません / この契約に / あなたが同意しない限り</div>
+        <div class="ref"><span class="grammar-tag">[接続詞unless]</span></div>
+    </div>
+
+    <div class="row">
+        <div class="en-container">
+            <div class="en" id="en210">Whether it rains or not, the game will be held.</div>
+            <button class="speaker-btn no-print" onclick="speak('en210')">🔊</button>
+        </div>
+        <div class="jp">雨が降ろうが降るまいが / その試合は / 開催されるでしょう</div>
+        <div class="ref"><span class="grammar-tag">[譲歩のwhether]</span></div>
+    </div>
+
+    <div class="advice-box">
+        <strong>★音声学習のアドバイス</strong><br>
+        🔊ボタンを押してネイティブのスピードに慣れましょう。準1級の英文は長いため、スラッシュごとに意味を捉えながら、音声の直後にリピートする「リピーティング」が効果的です。
+    </div>
+</div>
+
+<script>
+    function speak(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        const uttr = new SpeechSynthesisUtterance();
+        uttr.text = text;
+        uttr.lang = 'en-US'; // 米国英語
+        uttr.rate = 0.9;    // 少しゆっくりめに再生
+        window.speechSynthesis.cancel(); // 前の再生を停止
+        window.speechSynthesis.speak(uttr);
+    }
+</script>
+
+</body>
+</html>
