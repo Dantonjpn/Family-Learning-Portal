@@ -1,19 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>English Drill</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Learning Portal</title>
+    <style>
+        :root {
+            --kota-color: #ee5253; /* 康太さん：情熱の赤 */
+            --keita-color: #2e86de; /* 敬太さん：知性の青 */
+            --sota-color: #10ac84;  /* 奏太さん：成長の緑 */
+            --common-color: #576574;
+        }
+
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 40px 20px;
+            color: #2d3436;
+        }
+
+        h1 {
+            font-size: 28pt;
+            margin-bottom: 40px;
+            text-align: center;
+            letter-spacing: 2px;
+            color: #222;
+        }
+
+        /* 個別ボタンのコンテナ */
+        .user-section {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* 個人ボタンのデザイン */
+        .user-card {
+            text-decoration: none;
+            width: 220px;
+            height: 220px;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            background: white;
+            border: 2px solid transparent;
+        }
+
+        .user-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .user-card i {
+            font-size: 40pt;
+            margin-bottom: 15px;
+        }
+
+        .user-name {
+            font-size: 18pt;
+            font-weight: bold;
+        }
+
+        .user-sub {
+            font-size: 10pt;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* 各ユーザーの個別スタイル */
+        .kota-card { border-bottom: 8px solid var(--kota-color); color: var(--kota-color); }
+        .keita-card { border-bottom: 8px solid var(--keita-color); color: var(--keita-color); }
+        .sota-card { border-bottom: 8px solid var(--sota-color); color: var(--sota-color); }
+
+        /* 共通セクション */
+        .common-section {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .common-title {
+            font-size: 16pt;
+            color: #636e72;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .common-title::before, .common-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: #dfe6e9;
+        }
+
+        .drill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+        }
+
+        .drill-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: #fdfdfd;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .drill-item:hover {
+            background: #f1f2f6;
+            border-color: #ced4da;
+            transform: scale(1.02);
+        }
+
+        .tag {
+            font-size: 8pt;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 10px;
+            color: white;
+            background: #b2bec3;
+        }
+
+        .tag-voice { background: #27ae60; }
+
+        @media (max-width: 600px) {
+            .user-card { width: 100%; height: 120px; flex-direction: row; gap: 20px; }
+        }
+    </style>
 </head>
 <body>
-  <h1>English Drill</h1>
 
-  <ul>
-    <li><a href="basic_001_100.html">基礎 1-100</a></li>
-    <li><a href="basic_101_200.html">基礎 101-200</a></li>
-    <li><a href="advanced_001_100.html">応用 1-100</a></li>
-    <li><a href="advanced_101_150.html">応用 101-150</a></li>
-    <li><a href="advanced_151_200.html">応用 151-200</a></li>
-  </ul>
+    <h1>Family Learning Portal</h1>
+
+    <div class="user-section">
+        <a href="advanced_151_200.html" class="user-card kota-card">
+            <span class="user-name">康太</span>
+            <span class="user-sub">高校数学・応用英語</span>
+        </a>
+
+        <a href="advanced_001_100.html" class="user-card keita-card">
+            <span class="user-name">敬太</span>
+            <span class="user-sub">英検準2級・2級対策</span>
+        </a>
+
+        <a href="basic_001_100.html" class="user-card sota-card">
+            <span class="user-name">奏太</span>
+            <span class="user-sub">英語基礎ドリル</span>
+        </a>
+    </div>
+
+    <div class="common-section">
+        <div class="common-title">All English Drills</div>
+        <div class="drill-grid">
+            <a href="basic_001_100.html" class="drill-item"><span class="tag tag-voice">音声</span>基礎英語 001-100</a>
+            <a href="basic_101_200.html" class="drill-item"><span class="tag tag-voice">音声</span>基礎英語 101-200</a>
+            <a href="advanced_001_100.html" class="drill-item"><span class="tag tag-voice">音声</span>応用英語 001-100</a>
+            <a href="advanced_101_150.html" class="drill-item"><span class="tag tag-voice">音声</span>応用英語 101-150</a>
+            <a href="advanced_151_200.html" class="drill-item"><span class="tag tag-voice">音声</span>応用英語 151-200</a>
+        </div>
+    </div>
 
 </body>
 </html>
