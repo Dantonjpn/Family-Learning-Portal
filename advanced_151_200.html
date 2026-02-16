@@ -3,328 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>頭文字ヒント英作文ドリル (Part 2: Week 16-20)</title>
+    <title>英検応用構文ドリル (151-200) - 音声付・太字版</title>
     <style>
         @page { size: A4; margin: 10mm; }
-        @media print {
-            body { -webkit-print-color-adjust: exact; }
-            .sheet { page-break-after: always; height: 98vh; }
-            .no-print { display: none; }
-        }
-        body {
-            font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
-            background-color: #eee;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .sheet {
-            background-color: #fff;
-            width: 210mm;
-            min-height: 297mm;
-            padding: 15mm;
-            margin: 0 auto 20px auto;
-            box-sizing: border-box;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h1 {
-            font-size: 14pt;
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .week-label { background: #27ae60; color: #fff; padding: 2px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
+        @media print { body { -webkit-print-color-adjust: exact; } .sheet { page-break-after: always; height: 98vh; } .no-print { display: none; } }
+        body { font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; background-color: #eee; margin: 0; padding: 20px; color: #333; }
+        .sheet { background-color: #fff; width: 210mm; min-height: 297mm; padding: 15mm; margin: 0 auto 20px auto; box-sizing: border-box; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h1 { font-size: 14pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
         .theme-title { font-size: 12pt; font-weight: bold; }
-        
-        .row {
-            border-bottom: 1px dotted #ccc;
-            padding: 8px 0;
-            margin-bottom: 5px;
-        }
-        .jp {
-            font-size: 11pt;
-            color: #000;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .hint {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 14pt;
-            color: #555;
-            letter-spacing: 1px;
-        }
-        .hint span {
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
-        /* 印刷ボタン */
-        .print-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            background: #27ae60;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
+        .meta { font-size: 9pt; font-weight: normal; }
+        .row { border-bottom: 1px dotted #ccc; padding: 12px 0; margin-bottom: 4px; }
+        .jp { font-size: 11pt; color: #333; margin-bottom: 8px; font-weight: bold; }
+        .hint-container { display: flex; align-items: flex-start; justify-content: space-between; }
+        .hint { font-family: "Courier New", Courier, monospace; font-size: 13pt; color: #000; flex-grow: 1; line-height: 1.5; }
+        .hint span { border-bottom: 1px solid #000; min-width: 1em; display: inline-block; text-align: center; font-weight: bold; }
+        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 16pt; color: #27ae60; padding-left: 15px; transition: transform 0.1s; }
+        .speaker-btn:hover { transform: scale(1.2); }
+        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
     </style>
 </head>
 <body>
+<button class="print-btn no-print" onclick="window.print()">🖨️ プリントアウト</button>
+<script>
+    function speak(text) {
+        const uttr = new SpeechSynthesisUtterance();
+        uttr.text = text; uttr.lang = 'en-US'; uttr.rate = 1.1;
+        window.speechSynthesis.cancel(); window.speechSynthesis.speak(uttr);
+    }
+</script>
 
-<button class="print-btn no-print" onclick="window.print()">🖨️ ドリルを印刷 (Week 16-20)</button>
-
-<!-- Week 16 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 16</span> <span class="theme-title">受動態の応用表現</span></div>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="jp">151 彼は先生を怒らせました。</div>
-        <div class="hint"><span>H</span>• <span>m</span>••• <span>h</span>•• <span>t</span>•••••• <span>a</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">152 この絵は私の父によって描かれました。</div>
-        <div class="hint"><span>T</span>••• <span>p</span>•••••• <span>w</span>•• <span>p</span>•••••• <span>b</span>• <span>m</span>• <span>f</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">153 私はブラウン先生に英語を教わりました。</div>
-        <div class="hint"><span>I</span> <span>w</span>•• <span>t</span>••••• <span>E</span>•••••• <span>b</span>• <span>M</span>•. <span>B</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">154 橋本さんは大阪市長に選ばれました。</div>
-        <div class="hint"><span>M</span>•. <span>H</span>•••••••• <span>w</span>•• <span>e</span>•••••• <span>m</span>•••• <span>o</span>• <span>O</span>•••• <span>C</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">155 この窓は誰によって割られたのですか？</div>
-        <div class="hint"><span>W</span>•• <span>w</span>•• <span>t</span>•••• <span>w</span>••••• <span>b</span>••••• <span>b</span>•?</div>
-    </div>
-    <div class="row">
-        <div class="jp">156 富士山は多くの人々に知られています。</div>
-        <div class="hint"><span>M</span>•. <span>F</span>••• <span>i</span>• <span>k</span>•••• <span>t</span>• <span>m</span>••• <span>p</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">157 チーズは牛乳から作られます。</div>
-        <div class="hint"><span>C</span>••••• <span>i</span>• <span>m</span>••• <span>f</span>••• <span>m</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">158 彼は偉大な医者だと言われています。</div>
-        <div class="hint"><span>H</span>• <span>i</span>• <span>s</span>••• <span>t</span>• <span>b</span>• <span>a</span> <span>g</span>•••• <span>d</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">159 そのニュースは私たちをとても幸せにしました。</div>
-        <div class="hint"><span>T</span>•• <span>n</span>••• <span>m</span>••• <span>u</span>• <span>v</span>••• <span>h</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">160 その部屋は彼女によって清潔に保たれていました。</div>
-        <div class="hint"><span>T</span>•• <span>r</span>••• <span>w</span>•• <span>k</span>••• <span>c</span>•••• <span>b</span>• <span>h</span>••.</div>
-    </div>
+    <h1><div><span class="week-label">Week 16</span> <span class="theme-title">関係詞の発展・継続用法</span></div><span class="meta">151-160</span></h1>
+    <div class="row"><div class="jp">151 私はトムに会いましたが、彼はそのことについて何も知りませんでした。</div><div class="hint-container"><div class="hint"><span>I</span> <span>m</span>•• <span>T</span>••, <span>w</span>•• <span>k</span>••• <span>n</span>•••••• <span>a</span>•••• <span>i</span>•.</div><button class="speaker-btn no-print" onclick="speak('I met Tom, who knew nothing about it.')">🔊</button></div></div>
+    <div class="row"><div class="jp">152 彼女は辞書を一冊持っていますが、それは机の上にあります。</div><div class="hint-container"><div class="hint"><span>S</span>•• <span>h</span>•• <span>a</span> <span>d</span>•••••••••, <span>w</span>•••• <span>i</span>• <span>o</span>• <span>t</span>•• <span>d</span>•••.</div><button class="speaker-btn no-print" onclick="speak('She has a dictionary, which is on the desk.')">🔊</button></div></div>
+    <div class="row"><div class="jp">153 私には二人の息子がいますが、二人とも医者です。</div><div class="hint-container"><div class="hint"><span>I</span> <span>h</span>•• <span>t</span>•• <span>s</span>•••, <span>b</span>••• <span>o</span>• <span>w</span>••• <span>a</span>•• <span>d</span>••••••.</div><button class="speaker-btn no-print" onclick="speak('I have two sons, both of whom are doctors.')">🔊</button></div></div>
+    <div class="row"><div class="jp">154 ここに本が三冊ありますが、どれも面白いです。</div><div class="hint-container"><div class="hint"><span>H</span>••• <span>a</span>•• <span>t</span>•••• <span>b</span>••••, <span>a</span>•• <span>o</span>• <span>w</span>•••• <span>a</span>•• <span>i</span>••••••••••.</div><button class="speaker-btn no-print" onclick="speak('Here are three books, all of which are interesting.')">🔊</button></div></div>
+    <div class="row"><div class="jp">155 彼は宝くじに当たりましたが、それはみんなを驚かせました。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>w</span>•• <span>t</span>•• <span>l</span>••••••, <span>w</span>•••• <span>s</span>•••••••• <span>e</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('He won the lottery, which surprised everyone.')">🔊</button></div></div>
+    <div class="row"><div class="jp">156 彼が言ったことは本当です。</div><div class="hint-container"><div class="hint"><span>W</span>••• <span>h</span>• <span>s</span>••• <span>i</span>• <span>t</span>•••.</div><button class="speaker-btn no-print" onclick="speak('What he said is true.')">🔊</button></div></div>
+    <div class="row"><div class="jp">157 これが私が探していたものです。</div><div class="hint-container"><div class="hint"><span>T</span>••• <span>i</span>• <span>w</span>••• <span>I</span> <span>w</span>•• <span>l</span>•••••• <span>f</span>••.</div><button class="speaker-btn no-print" onclick="speak('This is what I was looking for.')">🔊</button></div></div>
+    <div class="row"><div class="jp">158 彼は自分が必要なものは何でも買います。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>b</span>••• <span>w</span>•••••••• <span>h</span>• <span>n</span>••••.</div><button class="speaker-btn no-print" onclick="speak('He buys whatever he needs.')">🔊</button></div></div>
+    <div class="row"><div class="jp">159 あなたが好きなほうをどちらでも選んでいいですよ。</div><div class="hint-container"><div class="hint"><span>Y</span>•• <span>c</span>•• <span>c</span>••••• <span>w</span>•••••••• <span>y</span>•• <span>l</span>•••.</div><button class="speaker-btn no-print" onclick="speak('You can choose whichever you like.')">🔊</button></div></div>
+    <div class="row"><div class="jp">160 誰が来ても、私はドアを開けません。</div><div class="hint-container"><div class="hint"><span>W</span>•••••• <span>c</span>••••, <span>I</span> <span>w</span>••• <span>n</span>•• <span>o</span>••• <span>t</span>•• <span>d</span>•••.</div><button class="speaker-btn no-print" onclick="speak('Whoever comes, I will not open the door.')">🔊</button></div></div>
 </div>
 
-<!-- Week 17 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 17</span> <span class="theme-title">使役動詞と知覚動詞</span></div>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="jp">161 私たちの先生は私を家に帰らせました。</div>
-        <div class="hint"><span>O</span>•• <span>t</span>•••••• <span>m</span>••• <span>m</span>• <span>g</span>• <span>h</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">162 私はアンナが通りを横切るのを見ました。</div>
-        <div class="hint"><span>I</span> <span>s</span>•• <span>A</span>••• <span>c</span>•••• <span>t</span>•• <span>s</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">163 私は昨日、自転車を盗まれました（盗まれた状態を持った）。</div>
-        <div class="hint"><span>I</span> <span>h</span>•• <span>m</span>• <span>b</span>••• <span>s</span>••••• <span>y</span>••••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">164 通りを歩いているとき、私は友達に会いました。</div>
-        <div class="hint"><span>W</span>•••••• <span>a</span>•••• <span>t</span>•• <span>s</span>•••••, <span>I</span> <span>m</span>•• <span>m</span>• <span>f</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">165 私が帰宅したとき、雨はすでに止んでいました。</div>
-        <div class="hint"><span>T</span>•• <span>r</span>••• <span>h</span>•• <span>a</span>•••••• <span>s</span>•••••• <span>w</span>••• <span>I</span> <span>g</span>•• <span>h</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">166 これが、私が若い頃に住んでいた家です。</div>
-        <div class="hint"><span>T</span>••• <span>i</span>• <span>t</span>•• <span>h</span>•••• <span>i</span>• <span>w</span>•••• <span>I</span> <span>l</span>•••• <span>w</span>••• <span>I</span> <span>w</span>•• <span>y</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">167 私には父親が歌手である友達がいます。</div>
-        <div class="hint"><span>I</span> <span>h</span>••• <span>a</span> <span>f</span>••••• <span>w</span>•••• <span>f</span>••••• <span>i</span>• <span>a</span> <span>s</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">168 彼には二人の息子がいて、（二人とも）医者です。</div>
-        <div class="hint"><span>H</span>• <span>h</span>•• <span>t</span>•• <span>s</span>•••, <span>w</span>•• <span>a</span>•• <span>d</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">169 彼はとても忙しいので、来ることができません。</div>
-        <div class="hint"><span>H</span>• <span>i</span>• <span>s</span>• <span>b</span>••• <span>t</span>••• <span>h</span>• <span>c</span>••••• <span>c</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">170 母は私が宿題をするのを手伝ってくれました。</div>
-        <div class="hint"><span>M</span>• <span>m</span>••••• <span>h</span>••••• <span>m</span>• <span>d</span>• <span>m</span>• <span>h</span>•••••••.</div>
-    </div>
+    <h1><div><span class="week-label">Week 17</span> <span class="theme-title">分詞構文・強調・倒置</span></div><span class="meta">161-170</span></h1>
+    <div class="row"><div class="jp">161 公園を歩いているとき、私は旧友に会いました。</div><div class="hint-container"><div class="hint"><span>W</span>•••••• <span>i</span>• <span>t</span>•• <span>p</span>•••, <span>I</span> <span>m</span>•• <span>a</span>• <span>o</span>•• <span>f</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('Walking in the park, I met an old friend.')">🔊</button></div></div>
+    <div class="row"><div class="jp">162 疲れを感じたので、私は早く寝ました。</div><div class="hint-container"><div class="hint"><span>F</span>•••••• <span>t</span>••••, <span>I</span> <span>w</span>••• <span>t</span>• <span>b</span>•• <span>e</span>••••.</div><button class="speaker-btn no-print" onclick="speak('Feeling tired, I went to bed early.')">🔊</button></div></div>
+    <div class="row"><div class="jp">163 英語で書かれているので、この本は難しいです。</div><div class="hint-container"><div class="hint"><span>W</span>•••••• <span>i</span>• <span>E</span>••••••, <span>t</span>••• <span>b</span>••• <span>i</span>• <span>d</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('Written in English, this book is difficult.')">🔊</button></div></div>
+    <div class="row"><div class="jp">164 彼はさよならと言って、部屋を出て行きました。</div><div class="hint-container"><div class="hint"><span>S</span>••••• <span>g</span>••••••, <span>h</span>• <span>l</span>••• <span>t</span>•• <span>r</span>•••.</div><button class="speaker-btn no-print" onclick="speak('Saying goodbye, he left the room.')) ">🔊</button></div></div>
+    <div class="row"><div class="jp">165 彼女が昨日買ったのは、このカバンでした。</div><div class="hint-container"><div class="hint"><span>I</span>• <span>w</span>•• <span>t</span>••• <span>b</span>•• <span>t</span>••• <span>s</span>•• <span>b</span>••••• <span>y</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('It was this bag that she bought yesterday.')">🔊</button></div></div>
+    <div class="row"><div class="jp">166 私は彼がそんなことを言ったなんて信じられません。</div><div class="hint-container"><div class="hint"><span>I</span> <span>d</span>• <span>b</span>•••••• <span>t</span>••• <span>h</span>• <span>s</span>••• <span>s</span>••• <span>a</span> <span>t</span>••••.</div><button class="speaker-btn no-print" onclick="speak('I do believe that he said such a thing.')">🔊</button></div></div>
+    <div class="row"><div class="jp">167 私は一度もそんなに美しい景色を見たことがありません。</div><div class="hint-container"><div class="hint"><span>N</span>•••• <span>h</span>••• <span>I</span> <span>s</span>••• <span>s</span>••• <span>a</span> <span>b</span>•••••••• <span>s</span>••••.</div><button class="speaker-btn no-print" onclick="speak('Never have I seen such a beautiful sight.')">🔊</button></div></div>
+    <div class="row"><div class="jp">168 彼は決して嘘をつきません。</div><div class="hint-container"><div class="hint"><span>O</span>• <span>n</span>• <span>a</span>•••••• <span>d</span>••• <span>h</span>• <span>t</span>••• <span>a</span> <span>l</span>••.</div><button class="speaker-btn no-print" onclick="speak('On no account does he tell a lie.')">🔊</button></div></div>
+    <div class="row"><div class="jp">169 ここにあなたの探している鍵があります。</div><div class="hint-container"><div class="hint"><span>H</span>••• <span>i</span>• <span>t</span>•• <span>k</span>•• <span>y</span>•• <span>a</span>•• <span>l</span>•••••• <span>f</span>••.</div><button class="speaker-btn no-print" onclick="speak('Here is the key you are looking for.')">🔊</button></div></div>
+    <div class="row"><div class="jp">170 突然、雨が降り始めました。</div><div class="hint-container"><div class="hint"><span>D</span>••• <span>c</span>••• <span>t</span>•• <span>r</span>••• <span>a</span>•• <span>o</span>• <span>a</span> <span>s</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('Down came the rain all of a sudden.')">🔊</button></div></div>
 </div>
 
-<!-- Week 18 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 18</span> <span class="theme-title">It ... to / so ... that 構文</span></div>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="jp">171 私はこの数学の問題の解き方がわかりません。</div>
-        <div class="hint"><span>I</span> <span>d</span>••'• <span>k</span>••• <span>h</span>•• <span>t</span>• <span>s</span>•••• <span>t</span>••• <span>m</span>••• <span>p</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">172 満点を取るのは難しいです。</div>
-        <div class="hint"><span>I</span>• <span>i</span>• <span>d</span>•••••••• <span>t</span>• <span>g</span>•• <span>a</span> <span>p</span>•••••• <span>s</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">173 私は叔父に自転車を修理してくれるよう頼みました。</div>
-        <div class="hint"><span>I</span> <span>a</span>•••• <span>m</span>• <span>u</span>•••• <span>t</span>• <span>r</span>••••• <span>m</span>• <span>b</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">174 私はあまりに疲れていて歩けませんでした。</div>
-        <div class="hint"><span>I</span> <span>w</span>•• <span>t</span>•• <span>t</span>•••• <span>t</span>• <span>w</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">175 ジョンは天井に手が届くほど背が高いです。</div>
-        <div class="hint"><span>J</span>••• <span>i</span>• <span>t</span>••• <span>e</span>••••• <span>t</span>• <span>t</span>•••• <span>t</span>•• <span>c</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">176 そんな難しい問題を解くなんて、彼は天才に違いありません。</div>
-        <div class="hint"><span>H</span>• <span>m</span>••• <span>b</span>• <span>a</span> <span>g</span>••••• <span>t</span>• <span>s</span>•••• <span>s</span>••• <span>a</span> <span>d</span>•••••••• <span>p</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">177 私たちにとって英語を学ぶことは重要です。</div>
-        <div class="hint"><span>I</span>• <span>i</span>• <span>i</span>•••••••• <span>f</span>•• <span>u</span>• <span>t</span>• <span>l</span>•••• <span>E</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">178 私はあなたにそこへ行ってほしいです。</div>
-        <div class="hint"><span>I</span> <span>w</span>••• <span>y</span>•• <span>t</span>• <span>g</span>• <span>t</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">179 母は私に部屋を掃除するように言いました。</div>
-        <div class="hint"><span>M</span>• <span>m</span>••••• <span>t</span>••• <span>m</span>• <span>t</span>• <span>c</span>•••• <span>m</span>• <span>r</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">180 雨はすぐに止むと言われています。</div>
-        <div class="hint"><span>I</span>• <span>i</span>• <span>s</span>••• <span>t</span>••• <span>t</span>•• <span>r</span>••• <span>w</span>••• <span>s</span>•••• <span>s</span>••••.</div>
-    </div>
+    <h1><div><span class="week-label">Week 18</span> <span class="theme-title">否定表現・無生物主語</span></div><span class="meta">171-180</span></h1>
+    <div class="row"><div class="jp">171 彼は決して嘘をつくような人ではありません。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>i</span>• <span>t</span>•• <span>l</span>••• <span>p</span>••••• <span>t</span>• <span>t</span>••• <span>a</span> <span>l</span>••.</div><button class="speaker-btn no-print" onclick="speak('He is the last person to tell a lie.')">🔊</button></div></div>
+    <div class="row"><div class="jp">172 このテストは決して簡単ではありません。</div><div class="hint-container"><div class="hint"><span>T</span>••• <span>t</span>••• <span>i</span>• <span>a</span>•••••••• <span>b</span>•• <span>e</span>•••.</div><button class="speaker-btn no-print" onclick="speak('This test is anything but easy.')">🔊</button></div></div>
+    <div class="row"><div class="jp">173 彼は失敗しただけでなく、諦めてしまいました。</div><div class="hint-container"><div class="hint"><span>F</span>•• <span>f</span>••• <span>f</span>••••••, <span>h</span>• <span>g</span>••• <span>u</span>•.</div><button class="speaker-btn no-print" onclick="speak('Far from failing, he gave up.')">🔊</button></div></div>
+    <div class="row"><div class="jp">174 私は全くお金を持っていません。</div><div class="hint-container"><div class="hint"><span>I</span> <span>h</span>••• <span>n</span>• <span>m</span>•••• <span>w</span>•••••••••.</div><button class="speaker-btn no-print" onclick="speak('I have no money whatsoever.')">🔊</button></div></div>
+    <div class="row"><div class="jp">175 彼が来ないのも不思議ではありません。</div><div class="hint-container"><div class="hint"><span>I</span>• <span>i</span>• <span>n</span>• <span>w</span>••••• <span>h</span>• <span>i</span>• <span>n</span>•• <span>c</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('It is no wonder he is not coming.')">🔊</button></div></div>
+    <div class="row"><div class="jp">176 この道を行けば駅に着きます。</div><div class="hint-container"><div class="hint"><span>T</span>••• <span>r</span>••• <span>w</span>••• <span>l</span>••• <span>y</span>•• <span>t</span>• <span>t</span>•• <span>s</span>••••••.</div><button class="speaker-btn no-print" onclick="speak('This road will lead you to the station.')">🔊</button></div></div>
+    <div class="row"><div class="jp">177 何が原因であなたは遅れたのですか。</div><div class="hint-container"><div class="hint"><span>W</span>••• <span>m</span>••• <span>y</span>•• <span>l</span>•••?</div><button class="speaker-btn no-print" onclick="speak('What made you late?')">🔊</button></div></div>
+    <div class="row"><div class="jp">178 激しい雨のために、私たちは外出できませんでした。</div><div class="hint-container"><div class="hint"><span>T</span>•• <span>h</span>•••• <span>r</span>••• <span>p</span>•••••••• <span>u</span>• <span>f</span>••• <span>g</span>•••• <span>o</span>••.</div><button class="speaker-btn no-print" onclick="speak('The heavy rain prevented us from going out.')">🔊</button></div></div>
+    <div class="row"><div class="jp">179 その知らせを聞いて、彼女は嬉しくなりました。</div><div class="hint-container"><div class="hint"><span>T</span>•• <span>n</span>••• <span>m</span>••• <span>h</span>•• <span>h</span>••••.</div><button class="speaker-btn no-print" onclick="speak('The news made her happy.')">🔊</button></div></div>
+    <div class="row"><div class="jp">180 この写真を見ると、私は子供時代を思い出します。</div><div class="hint-container"><div class="hint"><span>T</span>••• <span>p</span>••••• <span>r</span>•••••• <span>m</span>• <span>o</span>• <span>m</span>• <span>c</span>•••••••••.</div><button class="speaker-btn no-print" onclick="speak('This picture reminds me of my childhood.')">🔊</button></div></div>
 </div>
 
-<!-- Week 19 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 19</span> <span class="theme-title">仮定法（現在の妄想）</span></div>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
-
-    <div class="row">
-        <div class="jp">181 もし私が鳥なら、あなたのところへ飛んでいけるのに。</div>
-        <div class="hint"><span>I</span>• <span>I</span> <span>w</span>••• <span>a</span> <span>b</span>•••, <span>I</span> <span>c</span>•••• <span>f</span>•• <span>t</span>• <span>y</span>••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">182 もっとお金があればなあ。</div>
-        <div class="hint"><span>I</span> <span>w</span>••• <span>I</span> <span>h</span>•• <span>m</span>••• <span>m</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">183 私があなたなら、そんなことはしません。</div>
-        <div class="hint"><span>I</span>• <span>I</span> <span>w</span>••• <span>y</span>••, <span>I</span> <span>w</span>•••• <span>n</span>•• <span>d</span>• <span>s</span>••• <span>a</span> <span>t</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">184 もし時間があれば、あなたと一緒に行くのですが。</div>
-        <div class="hint"><span>I</span>• <span>I</span> <span>h</span>•• <span>t</span>••••, <span>I</span> <span>w</span>•••• <span>g</span>• <span>w</span>••• <span>y</span>••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">185 もし明日雪が降ったら（降るなら）、私たちは釣りに行くでしょう。</div>
-        <div class="hint"><span>I</span>• <span>i</span>• <span>s</span>•••• <span>t</span>•••••••, <span>w</span>• <span>w</span>••• <span>g</span>• <span>f</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">186 昨夜からずっと雪が降っています。</div>
-        <div class="hint"><span>I</span>• <span>h</span>•• <span>b</span>••• <span>s</span>•••••• <span>s</span>•••• <span>l</span>••• <span>n</span>••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">187 もっと上手にピアノが弾けたらいいのになあ。</div>
-        <div class="hint"><span>I</span> <span>w</span>••• <span>I</span> <span>c</span>•••• <span>p</span>••• <span>t</span>•• <span>p</span>•••• <span>b</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">188 飛べたらいいのになあ。</div>
-        <div class="hint"><span>I</span> <span>w</span>••• <span>I</span> <span>c</span>•••• <span>f</span>••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">189 もし明日雨なら（降るなら）、私はテニスをします。</div>
-        <div class="hint"><span>I</span>• <span>i</span>• <span>r</span>•••• <span>t</span>•••••••, <span>I</span> <span>w</span>••• <span>p</span>••• <span>t</span>•••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">190 彼女は学生ではありませんよね？</div>
-        <div class="hint"><span>S</span>•• <span>i</span>• <span>n</span>•• <span>a</span> <span>s</span>••••••, <span>i</span>• <span>s</span>••?</div>
-    </div>
+    <h1><div><span class="week-label">Week 19</span> <span class="theme-title">相関接続詞・付帯状況</span></div><span class="meta">181-190</span></h1>
+    <div class="row"><div class="jp">181 彼は英語だけでなくフランス語も話せます。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>c</span>•• <span>s</span>•••• <span>n</span>•• <span>o</span>••• <span>E</span>•••••• <span>b</span>•• <span>a</span>••• <span>F</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('He can speak not only English but also French.')">🔊</button></div></div>
+    <div class="row"><div class="jp">182 あなたか私のどちらかがそこへ行かなければなりません。</div><div class="hint-container"><div class="hint"><span>E</span>••••• <span>y</span>•• <span>o</span>• <span>I</span> <span>h</span>••• <span>t</span>• <span>g</span>• <span>t</span>••••.</div><button class="speaker-btn no-print" onclick="speak('Either you or I have to go there.')">🔊</button></div></div>
+    <div class="row"><div class="jp">183 ケンも私もそのことを知りません。</div><div class="hint-container"><div class="hint"><span>N</span>•••••• <span>K</span>•• <span>n</span>•• <span>I</span> <span>k</span>••• <span>a</span>•••• <span>i</span>•.</div><button class="speaker-btn no-print" onclick="speak('Neither Ken nor I know about it.')">🔊</button></div></div>
+    <div class="row"><div class="jp">184 彼は目を閉じて音楽を聴いていました。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>w</span>•• <span>l</span>•••••••• <span>t</span>• <span>m</span>•••• <span>w</span>••• <span>h</span>•• <span>e</span>••• <span>c</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('He was listening to music with his eyes closed.')">🔊</button></div></div>
+    <div class="row"><div class="jp">185 彼女は髪を風になびかせて立っていました。</div><div class="hint-container"><div class="hint"><span>S</span>•• <span>w</span>•• <span>s</span>••••••• <span>w</span>••• <span>h</span>•• <span>h</span>••• <span>w</span>••••• <span>i</span>• <span>t</span>•• <span>w</span>•••.</div><button class="speaker-btn no-print" onclick="speak('She was standing with her hair waving in the wind.')">🔊</button></div></div>
+    <div class="row"><div class="jp">186 その仕事はほとんど終わりました。</div><div class="hint-container"><div class="hint"><span>T</span>•• <span>w</span>••• <span>i</span>• <span>a</span>•• <span>b</span>•• <span>f</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('The work is all but finished.')">🔊</button></div></div>
+    <div class="row"><div class="jp">187 彼は親切にも私を駅まで送ってくれました。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>w</span>•• <span>s</span>• <span>k</span>••• <span>a</span>• <span>t</span>• <span>d</span>•••• <span>m</span>• <span>t</span>• <span>t</span>•• <span>s</span>••••••.</div><button class="speaker-btn no-print" onclick="speak('He was so kind as to drive me to the station.')">🔊</button></div></div>
+    <div class="row"><div class="jp">188 それはあまりに良すぎて本当だとは思えません。</div><div class="hint-container"><div class="hint"><span>I</span>• <span>i</span>• <span>t</span>•• <span>g</span>••• <span>t</span>• <span>b</span>• <span>t</span>•••.</div><button class="speaker-btn no-print" onclick="speak('It is too good to be true.')">🔊</button></div></div>
+    <div class="row"><div class="jp">189 私はそこへ行くよりはむしろ家にいたいです。</div><div class="hint-container"><div class="hint"><span>I</span> <span>w</span>•••• <span>r</span>••••• <span>s</span>••• <span>h</span>••• <span>t</span>••• <span>g</span>• <span>t</span>••••.</div><button class="speaker-btn no-print" onclick="speak('I would rather stay home than go there.')">🔊</button></div></div>
+    <div class="row"><div class="jp">190 彼はできるだけ一生懸命勉強しました。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>s</span>•••••• <span>a</span>• <span>h</span>••• <span>a</span>• <span>h</span>• <span>c</span>••••.</div><button class="speaker-btn no-print" onclick="speak('He studied as hard as he could.')">🔊</button></div></div>
 </div>
 
-<!-- Week 20 -->
 <div class="sheet">
-    <h1>
-        <div><span class="week-label">Week 20</span> <span class="theme-title">疑問文の応用と感嘆文</span></div>
-    </h1>
-    <div style="text-align:right; font-size:10pt; margin-bottom:10px;">名前：__________________　日付：____/____/____</div>
+    <h1><div><span class="week-label">Week 20</span> <span class="theme-title">最上級の書き換え・重要構文</span></div><span class="meta">191-200</span></h1>
+    <div class="row"><div class="jp">191 健康は他の何よりも大切です。</div><div class="hint-container"><div class="hint"><span>H</span>••••• <span>i</span>• <span>m</span>••• <span>i</span>•••••••• <span>t</span>••• <span>a</span>•••••• <span>e</span>•••.</div><button class="speaker-btn no-print" onclick="speak('Health is more important than anything else.')">🔊</button></div></div>
+    <div class="row"><div class="jp">192 信濃川は日本で他のどの川よりも長いです。</div><div class="hint-container"><div class="hint"><span>T</span>•• <span>S</span>••••• <span>i</span>• <span>l</span>••••• <span>t</span>••• <span>a</span>•• <span>o</span>•••• <span>r</span>•••• <span>i</span>• <span>J</span>••••.</div><button class="speaker-btn no-print" onclick="speak('The Shinano is longer than any other river in Japan.')">🔊</button></div></div>
+    <div class="row"><div class="jp">193 日本で信濃川ほど長い川はありません。</div><div class="hint-container"><div class="hint"><span>N</span>• <span>o</span>•••• <span>r</span>•••• <span>i</span>• <span>J</span>•••• <span>i</span>• <span>a</span>• <span>l</span>••• <span>a</span>• <span>t</span>•• <span>S</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('No other river in Japan is as long as the Shinano.')">🔊</button></div></div>
+    <div class="row"><div class="jp">194 私は昨日忙しくて、夕食を食べる時間さえありませんでした。</div><div class="hint-container"><div class="hint"><span>I</span> <span>w</span>•• <span>s</span>• <span>b</span>••• <span>y</span>•••••••• <span>t</span>••• <span>I</span> <span>d</span>••••’<span>t</span> <span>e</span>••• <span>h</span>••• <span>t</span>••• <span>t</span>• <span>e</span>•• <span>d</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('I was so busy yesterday that I didn\'t even have time to eat dinner.')">🔊</button></div></div>
+    <div class="row"><div class="jp">195 家に着くとすぐに、雨が降り始めました。</div><div class="hint-container"><div class="hint"><span>A</span>• <span>s</span>••• <span>a</span>• <span>I</span> <span>g</span>•• <span>h</span>•••, <span>i</span>• <span>s</span>•••••• <span>t</span>• <span>r</span>•••.</div><button class="speaker-btn no-print" onclick="speak('As soon as I got home, it started to rain.')">🔊</button></div></div>
+    <div class="row"><div class="jp">196 どんなに一生懸命やっても、一日では終わりません。</div><div class="hint-container"><div class="hint"><span>H</span>•••••• <span>h</span>••• <span>y</span>•• <span>t</span>••, <span>y</span>•• <span>c</span>••••• <span>f</span>••••• <span>i</span>• <span>i</span>• <span>a</span> <span>d</span>••.</div><button class="speaker-btn no-print" onclick="speak('However hard you try, you cannot finish it in a day.')">🔊</button></div></div>
+    <div class="row"><div class="jp">197 彼はまるで病気であるかのように見えます。</div><div class="hint-container"><div class="hint"><span>H</span>• <span>l</span>•••• <span>a</span>• <span>i</span>• <span>h</span>• <span>w</span>••• <span>s</span>•••.</div><button class="speaker-btn no-print" onclick="speak('He looks as if he were sick.')">🔊</button></div></div>
+    <div class="row"><div class="jp">198 あなたが彼に腹を立てるのももっともです。</div><div class="hint-container"><div class="hint"><span>Y</span>•• <span>m</span>•• <span>w</span>••• <span>b</span>• <span>a</span>•••• <span>w</span>••• <span>h</span>••.</div><button class="speaker-btn no-print" onclick="speak('You may well be angry with him.')">🔊</button></div></div>
+    <div class="row"><div class="jp">199 私は、彼は天才に違いないと思います。</div><div class="hint-container"><div class="hint"><span>I</span> <span>t</span>•••• <span>h</span>• <span>m</span>••• <span>b</span>• <span>a</span> <span>g</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('I think he must be a genius.')">🔊</button></div></div>
+    <div class="row"><div class="jp">200 私たちはただ、ベストを尽くすのみです。</div><div class="hint-container"><div class="hint"><span>A</span>•• <span>w</span>• <span>h</span>••• <span>t</span>• <span>d</span>• <span>i</span>• <span>t</span>• <span>d</span>• <span>o</span>•• <span>b</span>•••.</div><button class="speaker-btn no-print" onclick="speak('All we have to do is to do our best.')">🔊</button></div></div>
 
-    <div class="row">
-        <div class="jp">191 彼はなぜ怒っているのかわかりません。</div>
-        <div class="hint"><span>I</span> <span>d</span>••'• <span>k</span>••• <span>w</span>•• <span>h</span>• <span>i</span>• <span>a</span> <span>n</span>•••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">192 この箱の中に何が入っているのかわかりません。</div>
-        <div class="hint"><span>I</span> <span>d</span>••'• <span>k</span>••• <span>w</span>•••• <span>i</span>• <span>i</span>• <span>i</span>• <span>t</span>••• <span>b</span>••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">193 このゲームはいつ終わると思いますか。</div>
-        <div class="hint"><span>W</span>•••• <span>d</span>• <span>y</span>•• <span>t</span>•••• <span>t</span>••• <span>g</span>••• <span>w</span>••• <span>e</span>••?</div>
-    </div>
-    <div class="row">
-        <div class="jp">194 あなたは高校生ですよね？</div>
-        <div class="hint"><span>Y</span>•• <span>a</span>•• <span>a</span> <span>h</span>•••• <span>s</span>••••• <span>s</span>••••••, <span>a</span>••'<span>t</span> <span>y</span>••?</div>
-    </div>
-    <div class="row">
-        <div class="jp">195 ちょっと待ってくださいね。</div>
-        <div class="hint"><span>W</span>••• <span>a</span> <span>m</span>•••••, <span>w</span>••• <span>y</span>••?</div>
-    </div>
-    <div class="row">
-        <div class="jp">196 富士山はなんて美しいのでしょう！</div>
-        <div class="hint"><span>H</span>•• <span>b</span>•••••••• <span>M</span>•. <span>F</span>••• <span>i</span>•!</div>
-    </div>
-    <div class="row">
-        <div class="jp">197 富士山はなんて美しい山なのでしょう！</div>
-        <div class="hint"><span>W</span>•••• <span>a</span> <span>b</span>•••••••• <span>m</span>••••••• <span>M</span>•. <span>F</span>••• <span>i</span>•!</div>
-    </div>
-    <div class="row">
-        <div class="jp">198 彼らのチームが勝つと確信しています。</div>
-        <div class="hint"><span>I</span> <span>a</span>• <span>s</span>••• <span>t</span>••• <span>t</span>•••• <span>t</span>••• <span>w</span>••• <span>w</span>••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">199 駅への行き方を教えてください。</div>
-        <div class="hint"><span>P</span>••••• <span>t</span>••• <span>m</span>• <span>t</span>•• <span>w</span>•• <span>t</span>• <span>t</span>•• <span>s</span>••••••.</div>
-    </div>
-    <div class="row">
-        <div class="jp">200 あなたと話せて楽しかったです。</div>
-        <div class="hint"><span>I</span> <span>e</span>•••••• <span>t</span>•••••• <span>w</span>••• <span>y</span>••.</div>
+    <div class="advice-box">
+        <strong>1.1倍速・Advanced 200問 完遂！</strong><br>
+        これで英検2級〜準1級レベルの主要構文200本がすべて音声化されました。1.1倍速で「音を追いかける」訓練を繰り返すことで、リスニング力とスピーキング力の両方が劇的に向上します。
     </div>
 </div>
 
