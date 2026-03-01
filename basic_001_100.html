@@ -1,183 +1,813 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中学英語完成・英検準2級対策 (Part 1) - 音声付</title>
-    <style>
-        @page { size: A4; margin: 10mm; }
-        @media print { body { -webkit-print-color-adjust: exact; } .sheet { page-break-after: always; height: 98vh; } .no-print { display: none; } }
-        body { font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; background-color: #eee; margin: 0; padding: 20px; color: #333; }
-        .sheet { background-color: #fff; width: 210mm; min-height: 297mm; padding: 15mm; margin: 0 auto 20px auto; box-sizing: border-box; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { font-size: 14pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
-        .theme-title { font-size: 12pt; font-weight: bold; }
-        .meta { font-size: 9pt; font-weight: normal; }
-        .row { border-bottom: 1px dotted #ccc; padding: 8px 0; margin-bottom: 4px; }
-        .en-container { display: flex; align-items: center; justify-content: space-between; }
-        .en { font-family: "Times New Roman", serif; font-size: 13pt; font-weight: bold; color: #000; margin-bottom: 3px; flex-grow: 1; }
-        .jp { font-size: 10pt; color: #555; margin-bottom: 3px; }
-        .ref { font-size: 8pt; color: #d35400; text-align: right; display: block; }
-        .grammar-tag { font-size: 8pt; color: #0066cc; background: #eef; padding: 1px 4px; border-radius: 2px; margin-right: 5px; }
-        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 15pt; color: #27ae60; padding: 0 10px; transition: transform 0.1s; }
-        .speaker-btn:hover { transform: scale(1.2); }
-        .advice-box { margin-top: 20px; padding: 12px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; font-size: 9pt; line-height: 1.6; }
-        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
-    </style>
-</head>
-<body>
-<button class="print-btn no-print" onclick="window.print()">🖨️ プリントアウト</button>
+<meta charset="UTF-8">
+<title>特製：中学英語完成・英検準2級対策 (Week 1-10)</title>
+<style>
+    body { font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; font-size: 11pt; line-height: 1.4; color: #333; margin: 0; padding: 20px; background-color: #f5f5f5; }
+    .sheet { background-color: white; page-break-after: always; padding: 20px 30px; max-width: 850px; margin: 0 auto 30px auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+    .header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 3px solid #000; padding-bottom: 10px; }
+    .week-title { font-size: 15pt; font-weight: bold; }
+    .print-btn { background-color: #4CAF50; color: white; padding: 8px 16px; font-size: 11pt; font-weight: bold; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+    .print-btn:hover { background-color: #45a049; }
+    .name-date { font-size: 10pt; text-align: right; margin-bottom: 10px; margin-top: 5px; }
+    .mission { background: #fff0d4; padding: 10px; border-radius: 5px; font-size: 10pt; margin-bottom: 15px; border: 1px solid #ffcc80; }
+    .row { border-bottom: 1px dashed #ccc; padding: 10px 0; page-break-inside: avoid; }
+    .en { font-weight: bold; font-size: 12.5pt; margin-bottom: 5px; font-family: "Arial", sans-serif; display: flex; align-items: center; }
+    .audio-btn { background: none; border: none; cursor: pointer; font-size: 14pt; margin-left: 10px; transition: transform 0.1s; }
+    .audio-btn:active { transform: scale(0.8); }
+    .jp-process { font-size: 10pt; color: #444; margin-bottom: 3px; }
+    .ref-info { font-size: 8.5pt; color: #888; margin-left: 10px; font-weight: normal; }
+    .check-area { font-size: 9pt; text-align: right; color: #666; margin-top: -5px; }
+    .check-area label { margin-left: 8px; cursor: pointer; }
+    .write-space { border-bottom: 1px solid #555; height: 25px; margin-top: 5px; }
+    input[type="checkbox"] { transform: scale(1.1); margin-right: 3px; }
+
+    @media print { 
+        body { background-color: white; padding: 0; }
+        .sheet { box-shadow: none; margin: 0; padding: 0; border-radius: 0; }
+        .no-print { display: none !important; }
+    }
+</style>
 <script>
-    function speak(elementId) {
-        const text = document.getElementById(elementId).innerText;
-        const uttr = new SpeechSynthesisUtterance();
-        uttr.text = text; uttr.lang = 'en-US'; uttr.rate = 1.1;
-        window.speechSynthesis.cancel(); window.speechSynthesis.speak(uttr);
+    // 無音バグを回避し、確実に再生させる完全版の音声処理
+    function speak(text) {
+        if (!('speechSynthesis' in window)) {
+            alert("お使いのブラウザは音声再生に対応していません。");
+            return;
+        }
+        
+        window.speechSynthesis.cancel(); // 前の音声をクリア
+        
+        // 直後に再生すると消されるバグを防ぐため、0.05秒遅らせて確実に実行
+        setTimeout(function() {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 1.0;
+            window.speechSynthesis.speak(utterance);
+        }, 50);
+    }
+
+    // 各週のみを印刷する機能
+    function printWeek(weekNum) {
+        const style = document.createElement('style');
+        style.id = 'temp-print-style';
+        style.innerHTML = '@media print { .sheet { display: none !important; } #week-' + weekNum + ' { display: block !important; } }';
+        document.head.appendChild(style);
+        window.print();
+        document.head.removeChild(style);
     }
 </script>
+</head>
+<body>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 1</span> <span class="theme-title">基本時制のミックス</span></div><span class="meta">No. 001-010</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en001">I am usually at home on Sundays.</div><button class="speaker-btn no-print" onclick="speak('en001')">🔊</button></div><div class="jp">私は / います / ふだん / 家に / 毎週日曜日に</div><div class="ref"><span class="grammar-tag">[be動詞]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en002">He plays soccer with his friends after school.</div><button class="speaker-btn no-print" onclick="speak('en002')">🔊</button></div><div class="jp">彼は / します / サッカーを / 彼の友達と / 放課後に</div><div class="ref"><span class="grammar-tag">[3単現]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en003">My father does not like cooking.</div><button class="speaker-btn no-print" onclick="speak('en003')">🔊</button></div><div class="jp">私の父は / 好きではありません / 料理することが</div><div class="ref"><span class="grammar-tag">[否定文]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en004">What does your sister do on weekends?</div><button class="speaker-btn no-print" onclick="speak('en004')">🔊</button></div><div class="jp">何 / あなたの妹は / しますか / 週末に</div><div class="ref"><span class="grammar-tag">[疑問詞What]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en005">I was watching TV when you called me.</div><button class="speaker-btn no-print" onclick="speak('en005')">🔊</button></div><div class="jp">私は / していました / 見ることを / テレビを / あなたが電話したとき</div><div class="ref"><span class="grammar-tag">[過去進行形]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en006">We went to the park to play tennis yesterday.</div><button class="speaker-btn no-print" onclick="speak('en006')">🔊</button></div><div class="jp">私たちは / 行きました / 公園へ / するために / テニスを</div><div class="ref"><span class="grammar-tag">[過去形]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en007">I will visit my grandmother next week.</div><button class="speaker-btn no-print" onclick="speak('en007')">🔊</button></div><div class="jp">私は / つもりです / 訪れる / 私の祖母を</div><div class="ref"><span class="grammar-tag">[未来形will]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en008">Are you going to study math tonight?</div><button class="speaker-btn no-print" onclick="speak('en008')">🔊</button></div><div class="jp">あなたは / つもりですか / 勉強する / 数学を</div><div class="ref"><span class="grammar-tag">[be going to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en009">Don't be late for school.</div><button class="speaker-btn no-print" onclick="speak('en009')">🔊</button></div><div class="jp">遅れてはいけません / 学校に</div><div class="ref"><span class="grammar-tag">[否定命令文]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en010">Which do you like better, summer or winter?</div><button class="speaker-btn no-print" onclick="speak('en010')">🔊</button></div><div class="jp">どちら / 好きですか / より良く / 夏と冬では</div><div class="ref"><span class="grammar-tag">[Which]</span></div></div>
+<!-- Week 1 -->
+<div class="sheet" id="week-1">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 1 基本時制のミックス</div>
+        <button class="print-btn" onclick="printWeek(1)">🖨️ Week 1 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中1全般～中2未来</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：時制を意識しよう</strong><br>
+        「いつ」の話かによって動詞の形が変わります。yesterday（過去）、now（進行形）、tomorrow（未来）などのキーワードに反応して、動詞を変化させる練習をしましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">001 I am usually at home on Sundays. <button class="audio-btn no-print" onclick="speak(&quot;I am usually at home on Sundays.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / います / ふだん / 家に / 毎週日曜日に <span class="ref-info">[be動詞] テーマ1 p.12 / テーマ2 p.14</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">002 He plays soccer with his friends after school. <button class="audio-btn no-print" onclick="speak(&quot;He plays soccer with his friends after school.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / します / サッカーを / 彼の友達と / 放課後に <span class="ref-info">[一般動詞/3単現] テーマ5 p.20</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">003 My father does not like cooking. <button class="audio-btn no-print" onclick="speak(&quot;My father does not like cooking.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の父は / 好きではありません / 料理することが <span class="ref-info">[一般動詞否定] テーマ6 p.22</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">004 What does your sister do on weekends? <button class="audio-btn no-print" onclick="speak(&quot;What does your sister do on weekends?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">何 / あなたの妹は / しますか / 週末に <span class="ref-info">[疑問詞What] テーマ8 p.26</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">005 I was watching TV when you called me. <button class="audio-btn no-print" onclick="speak(&quot;I was watching TV when you called me.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / していました / 見ることを / テレビを / （～のとき）あなたが電話したとき <span class="ref-info">[過去進行形/接続詞] テーマ31 p.74 / テーマ45 p.102</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">006 We went to the park to play tennis yesterday. <button class="audio-btn no-print" onclick="speak(&quot;We went to the park to play tennis yesterday.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私たちは / 行きました / 公園へ / するために / テニスを / 昨日 <span class="ref-info">[過去形/不定詞] テーマ28 p.66 / テーマ49 p.110</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">007 I will visit my grandmother next week. <button class="audio-btn no-print" onclick="speak(&quot;I will visit my grandmother next week.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / つもりです / 訪れる / 私の祖母を / 来週 <span class="ref-info">[未来形will] テーマ33 p.78</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">008 Are you going to study math tonight? <button class="audio-btn no-print" onclick="speak(&quot;Are you going to study math tonight?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あなたは / つもりですか / 勉強する / 数学を / 今夜 <span class="ref-info">[未来形be going to] テーマ34 p.80</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">009 Don't be late for school. <button class="audio-btn no-print" onclick="speak(&quot;Don't be late for school.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（してはいけない）遅れてはいけません / 学校に <span class="ref-info">[否定命令文] テーマ18 p.46</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">010 Which do you like better, summer or winter? <button class="audio-btn no-print" onclick="speak(&quot;Which do you like better, summer or winter?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">どちら / あなたは好きですか / より良く / 夏と冬では <span class="ref-info">[疑問詞Which/比較] テーマ16 p.42</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 2</span> <span class="theme-title">助動詞・比較</span></div><span class="meta">No. 011-020</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en011">You must finish your homework by tomorrow.</div><button class="speaker-btn no-print" onclick="speak('en011')">🔊</button></div><div class="jp">あなたは / しなければなりません / 終える（ことを） / 宿題を</div><div class="ref"><span class="grammar-tag">[must]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en012">May I use your dictionary for a moment?</div><button class="speaker-btn no-print" onclick="speak('en012')">🔊</button></div><div class="jp">してもよいですか / 使う（ことを） / あなたの辞書を</div><div class="ref"><span class="grammar-tag">[May I]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en013">This mountain is higher than that one.</div><button class="speaker-btn no-print" onclick="speak('en013')">🔊</button></div><div class="jp">この山は / です / より高い / あの山よりも</div><div class="ref"><span class="grammar-tag">[比較級]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en014">He is the tallest student in our class.</div><button class="speaker-btn no-print" onclick="speak('en014')">🔊</button></div><div class="jp">彼は / です / 最も背が高い生徒 / 私たちのクラスで</div><div class="ref"><span class="grammar-tag">[最上級]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en015">Math is as difficult as English for me.</div><button class="speaker-btn no-print" onclick="speak('en015')">🔊</button></div><div class="jp">数学は / です / 同じくらい難しい / 英語と / 私にとって</div><div class="ref"><span class="grammar-tag">[as as]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en016">You don't have to worry about the result.</div><button class="speaker-btn no-print" onclick="speak('en016')">🔊</button></div><div class="jp">あなたは / 必要はありません / 心配する / 結果について</div><div class="ref"><span class="grammar-tag">[don't have to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en017">Could you tell me the way to the station?</div><button class="speaker-btn no-print" onclick="speak('en017')">🔊</button></div><div class="jp">いただけますか / 教えて / 私に / 道を / 駅への</div><div class="ref"><span class="grammar-tag">[依頼 Could you]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en018">He should see a doctor as soon as possible.</div><button class="speaker-btn no-print" onclick="speak('en018')">🔊</button></div><div class="jp">彼は / したほうがよい / 診てもらう / 医者に / できるだけ早く</div><div class="ref"><span class="grammar-tag">[should]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en019">I have to stay at home today.</div><button class="speaker-btn no-print" onclick="speak('en019')">🔊</button></div><div class="jp">私は / しなければならない / 滞在する / 家に / 今日</div><div class="ref"><span class="grammar-tag">[have to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en020">It will be sunny tomorrow afternoon.</div><button class="speaker-btn no-print" onclick="speak('en020')">🔊</button></div><div class="jp">（天候は） / なるでしょう / 晴れに / 明日の午後に</div><div class="ref"><span class="grammar-tag">[天候のIt]</span></div></div>
+<!-- Week 2 -->
+<div class="sheet" id="week-2">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 2 助動詞を使った表現</div>
+        <button class="print-btn" onclick="printWeek(2)">🖨️ Week 2 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 助動詞全般</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：気持ちを乗せる助動詞</strong><br>
+        助動詞は「話し手の気持ち」をプラスします。命令するのではなく「～したほうがいいよ(should)」と言ったり、丁寧に「～してくれませんか(Will you)」と頼んだり、ニュアンスの違いを意識しましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">011 I can play the piano very well. <button class="audio-btn no-print" onclick="speak(&quot;I can play the piano very well.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / できます / 弾く / ピアノを / とても上手に <span class="ref-info">[助動詞can] テーマ20 p.50</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">012 You must finish your homework before dinner. <button class="audio-btn no-print" onclick="speak(&quot;You must finish your homework before dinner.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あなたは / しなければならない / 終わらせる / あなたの宿題を / 夕食前に <span class="ref-info">[助動詞must] テーマ37 p.86</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">013 You have to get up early tomorrow morning. <button class="audio-btn no-print" onclick="speak(&quot;You have to get up early tomorrow morning.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あなたは / しなければならない / 起きる / 早く / 明日の朝 <span class="ref-info">[have to] テーマ40内 p.92</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">014 He may be at home now. <button class="audio-btn no-print" onclick="speak(&quot;He may be at home now.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / かもしれない / （いる）家に / 今 <span class="ref-info">[助動詞may(推量)] テーマ38 p.88</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">015 You should read this book. <button class="audio-btn no-print" onclick="speak(&quot;You should read this book.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あなたは / すべきです（したほうがいい） / 読む / この本を <span class="ref-info">[助動詞should] テーマ40 p.92</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">016 Shall I open the window? <button class="audio-btn no-print" onclick="speak(&quot;Shall I open the window?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（しましょうか）開けましょうか / 窓を <span class="ref-info">[助動詞Shall I] テーマ39 p.90</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">017 Will you help me with my homework? <button class="audio-btn no-print" onclick="speak(&quot;Will you help me with my homework?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（してくれませんか）手伝ってくれませんか / 私を / 私の宿題について <span class="ref-info">[Will you/依頼] テーマ88 p.190(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">018 Can you show me your passport? <button class="audio-btn no-print" onclick="speak(&quot;Can you show me your passport?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（できますか/してくれますか）見せる / 私に / あなたのパスポートを <span class="ref-info">[Can you/依頼] テーマ22 p.54</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">019 May I ask you a question? <button class="audio-btn no-print" onclick="speak(&quot;May I ask you a question?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（してもいいですか）私は / たずねる / あなたに / 質問を <span class="ref-info">[May I/許可] テーマ38 p.88(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">020 We must not run in the library. <button class="audio-btn no-print" onclick="speak(&quot;We must not run in the library.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私たちは / してはいけない / 走る / 図書館の中で <span class="ref-info">[must not/禁止] テーマ37 p.86</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 3</span> <span class="theme-title">不定詞・動名詞</span></div><span class="meta">No. 021-030</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en021">To read books is very important.</div><button class="speaker-btn no-print" onclick="speak('en021')">🔊</button></div><div class="jp">読むことは / 本を / です / とても大切</div><div class="ref"><span class="grammar-tag">[不定詞名詞的用法]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en022">I want to be a pilot in the future.</div><button class="speaker-btn no-print" onclick="speak('en022')">🔊</button></div><div class="jp">私は / したいです / なることを / パイロットに / 将来</div><div class="ref"><span class="grammar-tag">[want to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en023">She went to the library to study history.</div><button class="speaker-btn no-print" onclick="speak('en023')">🔊</button></div><div class="jp">彼女は / 行きました / 図書館へ / 勉強するために / 歴史を</div><div class="ref"><span class="grammar-tag">[不定詞副詞的用法]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en024">I have a lot of things to do today.</div><button class="speaker-btn no-print" onclick="speak('en024')">🔊</button></div><div class="jp">私は / 持っています / たくさんのこと（を） / すべき / 今日</div><div class="ref"><span class="grammar-tag">[不定詞形容詞的用法]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en025">My hobby is taking pictures of flowers.</div><button class="speaker-btn no-print" onclick="speak('en025')">🔊</button></div><div class="jp">私の趣味は / です / 撮ること / 写真を / 花の</div><div class="ref"><span class="grammar-tag">[動名詞]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en026">Thank you for inviting me to the party.</div><button class="speaker-btn no-print" onclick="speak('en026')">🔊</button></div><div class="jp">ありがとう / ～に対して / 招待したこと / 私を / パーティーに</div><div class="ref"><span class="grammar-tag">[前置詞+動名詞]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en027">He is good at playing the piano.</div><button class="speaker-btn no-print" onclick="speak('en027')">🔊</button></div><div class="jp">彼は / です / 得意で / 弾くことが / ピアノを</div><div class="ref"><span class="grammar-tag">[be good at]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en028">Stop talking and listen to me.</div><button class="speaker-btn no-print" onclick="speak('en028')">🔊</button></div><div class="jp">やめなさい / 話すことを / そして / 聴きなさい / 私の話を</div><div class="ref"><span class="grammar-tag">[stop -ing]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en029">I enjoyed swimming in the sea last summer.</div><button class="speaker-btn no-print" onclick="speak('en029')">🔊</button></div><div class="jp">私は / 楽しみました / 泳ぐことを / 海で / 去年の夏に</div><div class="ref"><span class="grammar-tag">[enjoy -ing]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en030">I'm looking forward to seeing you soon.</div><button class="speaker-btn no-print" onclick="speak('en030')">🔊</button></div><div class="jp">私は / 楽しみにしています / 会うことを / あなたに / すぐに</div><div class="ref"><span class="grammar-tag">[look forward to -ing]</span></div></div>
+<!-- Week 3 -->
+<div class="sheet" id="week-3">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 3 文をつなぐ接続詞</div>
+        <button class="print-btn" onclick="printWeek(3)">🖨️ Week 3 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 接続詞</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：長い文を作る</strong><br>
+        接続詞（When, If, Because）を使うと、2つの文を1つにつなげることができます。「～のとき、…だ」「もし～なら、…だ」というセットのリズムを覚えましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">021 I think that English is very interesting. <button class="audio-btn no-print" onclick="speak(&quot;I think that English is very interesting.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 思います / （ということ）を / 英語は / とても面白い <span class="ref-info">[接続詞that] テーマ43 p.98</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">022 I know that he is a famous doctor. <button class="audio-btn no-print" onclick="speak(&quot;I know that he is a famous doctor.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 知っています / （ということ）を / 彼が / 有名な医者である <span class="ref-info">[接続詞that] テーマ43 p.98</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">023 When I came home, my mother was cooking. <button class="audio-btn no-print" onclick="speak(&quot;When I came home, my mother was cooking.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（～のとき）私が / 帰宅したとき / 私の母は / 料理をしていました <span class="ref-info">[接続詞when] テーマ45 p.102</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">024 If it is sunny tomorrow, let's go fishing. <button class="audio-btn no-print" onclick="speak(&quot;If it is sunny tomorrow, let's go fishing.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">もし～なら / （天気）晴れ / 明日 / （しましょう）行こう / 釣りに <span class="ref-info">[接続詞if] テーマ46 p.104</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">025 Because I was tired, I went to bed early. <button class="audio-btn no-print" onclick="speak(&quot;Because I was tired, I went to bed early.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（なぜなら）私は疲れていたので / 私は / 寝ました / 早く <span class="ref-info">[接続詞because] テーマ46(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">026 I stayed home because it was raining. <button class="audio-btn no-print" onclick="speak(&quot;I stayed home because it was raining.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / いました / 家に / （なぜなら）雨が降っていたので <span class="ref-info">[接続詞because] テーマ46(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">027 I am sure that our team will win. <button class="audio-btn no-print" onclick="speak(&quot;I am sure that our team will win.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 確信しています / （ということ）を / 私たちのチームが勝つだろう <span class="ref-info">[be sure that] テーマ44 p.100</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">028 Please tell me when the bus arrives. <button class="audio-btn no-print" onclick="speak(&quot;Please tell me when the bus arrives.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">教えてください / 私に / いつ / そのバスが / 到着するか <span class="ref-info">[間接疑問(先行学習)] テーマ86 p.186</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">029 Wash your hands before you eat dinner. <button class="audio-btn no-print" onclick="speak(&quot;Wash your hands before you eat dinner.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">洗いなさい / あなたの手を / （～の前に）あなたが / 食べる / 夕食を <span class="ref-info">[接続詞before] テーマ51(参考) p.114</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">030 I will call you after I finish my homework. <button class="audio-btn no-print" onclick="speak(&quot;I will call you after I finish my homework.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 電話します / あなたに / （～の後で）私が / 終えたら / 私の宿題を <span class="ref-info">[接続詞after] テーマ45(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 4</span> <span class="theme-title">受動態・現在完了(1)</span></div><span class="meta">No. 031-040</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en031">This letter was written by Ken.</div><button class="speaker-btn no-print" onclick="speak('en031')">🔊</button></div><div class="jp">この手紙は / です / 書かれた / ケンによって</div><div class="ref"><span class="grammar-tag">[受動態]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en032">Spanish is spoken in many countries.</div><button class="speaker-btn no-print" onclick="speak('en032')">🔊</button></div><div class="jp">スペイン語は / です / 話されている / 多くの国々で</div><div class="ref"><span class="grammar-tag">[受動態(現在)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en033">The window was broken by the wind.</div><button class="speaker-btn no-print" onclick="speak('en033')">🔊</button></div><div class="jp">その窓は / です / 壊された / 風によって</div><div class="ref"><span class="grammar-tag">[受動態(過去)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en034">I have just finished my lunch.</div><button class="speaker-btn no-print" onclick="speak('en034')">🔊</button></div><div class="jp">私は / ちょうど / 終えたところです / 昼食を</div><div class="ref"><span class="grammar-tag">[現在完了(完了)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en035">Have you ever been to Hokkaido?</div><button class="speaker-btn no-print" onclick="speak('en035')">🔊</button></div><div class="jp">あなたは / 今までに / 行ったことがありますか / 北海道へ</div><div class="ref"><span class="grammar-tag">[現在完了(経験)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en036">I have seen that movie twice.</div><button class="speaker-btn no-print" onclick="speak('en036')">🔊</button></div><div class="jp">私は / あります / 見たことが / あの映画を / 2回</div><div class="ref"><span class="grammar-tag">[現在完了(経験)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en037">He has lived in Osaka for ten years.</div><button class="speaker-btn no-print" onclick="speak('en037')">🔊</button></div><div class="jp">彼は / ずっと住んでいます / 大阪に / 10年間</div><div class="ref"><span class="grammar-tag">[現在完了(継続)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en038">How long have you lived in this city?</div><button class="speaker-btn no-print" onclick="speak('en038')">🔊</button></div><div class="jp">どのくらい長く / あなたは / 住んでいますか / この市に</div><div class="ref"><span class="grammar-tag">[現在完了(期間)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en039">She has been sick since last Monday.</div><button class="speaker-btn no-print" onclick="speak('en039')">🔊</button></div><div class="jp">彼女は / ずっと病気です / 先週の月曜日から</div><div class="ref"><span class="grammar-tag">[現在完了(状態継続)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en040">The car was made in Japan.</div><button class="speaker-btn no-print" onclick="speak('en040')">🔊</button></div><div class="jp">その車は / です / 作られた / 日本で</div><div class="ref"><span class="grammar-tag">[受動態]</span></div></div>
+<!-- Week 4 -->
+<div class="sheet" id="week-4">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 4 不定詞の3用法</div>
+        <button class="print-btn" onclick="printWeek(4)">🖨️ Week 4 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 不定詞</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：to + 動詞の原形</strong><br>
+        「to ＋ 動詞」の形は、文の中でいろいろな役割をします。「～すること（名詞）」「～するために（副詞）」「～するための（形容詞）」のどれなのか、語順で判断しましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">031 I want to be a teacher in the future. <button class="audio-btn no-print" onclick="speak(&quot;I want to be a teacher in the future.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / したい / なる（こと） / 先生に / 将来 <span class="ref-info">[不定詞(名詞)] テーマ47(参考) p.106</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">032 To study English is important. <button class="audio-btn no-print" onclick="speak(&quot;To study English is important.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">勉強することは / 英語を / です / 重要 <span class="ref-info">[不定詞(名詞/主語)] テーマ47 p.106</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">033 I went to the library to borrow some books. <button class="audio-btn no-print" onclick="speak(&quot;I went to the library to borrow some books.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 行きました / 図書館へ / 借りるために / いくつかの本を <span class="ref-info">[不定詞(副詞/目的)] テーマ49 p.110</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">034 He got up early to catch the train. <button class="audio-btn no-print" onclick="speak(&quot;He got up early to catch the train.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / 起きた / 早く / 乗るために（つかまえるために） / 電車に <span class="ref-info">[不定詞(副詞/目的)] テーマ49 p.110</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">035 I have a lot of homework to do today. <button class="audio-btn no-print" onclick="speak(&quot;I have a lot of homework to do today.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / あります / たくさんの宿題が / すべき（するための） / 今日 <span class="ref-info">[不定詞(形容詞)] テーマ48 p.108</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">036 Do you have anything to drink? <button class="audio-btn no-print" onclick="speak(&quot;Do you have anything to drink?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あなたは / ありますか / 何か / 飲むための（飲み物） <span class="ref-info">[不定詞(形容詞)] テーマ48 p.108</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">037 There are many places to visit in Kyoto. <button class="audio-btn no-print" onclick="speak(&quot;There are many places to visit in Kyoto.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あります / たくさんの場所が / 訪れるべき / 京都には <span class="ref-info">[不定詞(形容詞)] テーマ48 p.108</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">038 I am glad to see you. <button class="audio-btn no-print" onclick="speak(&quot;I am glad to see you.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / うれしい / 会えて（会うことができて） / あなたに <span class="ref-info">[不定詞(感情の原因)] テーマ49(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">039 She began to cry suddenly. <button class="audio-btn no-print" onclick="speak(&quot;She began to cry suddenly.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼女は / 始めました / 泣くことを / 突然 <span class="ref-info">[不定詞(名詞)] テーマ47(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">040 He tried to answer the question. <button class="audio-btn no-print" onclick="speak(&quot;He tried to answer the question.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / 試みました（しようとした） / 答えることを / その質問に <span class="ref-info">[try to] テーマ47(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-    <div class="sheet">
-    <h1><div><span class="week-label">Week 5</span> <span class="theme-title">分詞・関係代名詞(1)</span></div><span class="meta">No. 041-050</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en041">The boy running over there is my brother.</div><button class="speaker-btn no-print" onclick="speak('en041')">🔊</button></div><div class="jp">その少年は / 走っている / あそこで / です / 私の兄（弟）</div><div class="ref"><span class="grammar-tag">[現在分詞修飾]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en042">Do you know the girl playing the guitar?</div><button class="speaker-btn no-print" onclick="speak('en042')">🔊</button></div><div class="jp">あなたは / 知っていますか / その少女を / 弾いている / ギターを</div><div class="ref"><span class="grammar-tag">[現在分詞修飾]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en043">This is a book written in English.</div><button class="speaker-btn no-print" onclick="speak('en043')">🔊</button></div><div class="jp">これは / です / 本 / 書かれた / 英語で</div><div class="ref"><span class="grammar-tag">[過去分詞修飾]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en044">I want to buy a car made in Germany.</div><button class="speaker-btn no-print" onclick="speak('en044')">🔊</button></div><div class="jp">私は / 買いたい / 車を / 作られた / ドイツで</div><div class="ref"><span class="grammar-tag">[過去分詞修飾]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en045">The man who is talking to Ken is my uncle.</div><button class="speaker-btn no-print" onclick="speak('en045')">🔊</button></div><div class="jp">その男は / 話している / ケンに / です / 私の叔父</div><div class="ref"><span class="grammar-tag">[関係代名詞who]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en046">I have a friend who lives in London.</div><button class="speaker-btn no-print" onclick="speak('en046')">🔊</button></div><div class="jp">私は / 持っています / 友達を / 住んでいる / ロンドンに</div><div class="ref"><span class="grammar-tag">[関係代名詞who]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en047">This is the bus which goes to the airport.</div><button class="speaker-btn no-print" onclick="speak('en047')">🔊</button></div><div class="jp">これは / です / バス / 行く / 空港へ</div><div class="ref"><span class="grammar-tag">[関係代名詞which]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en048">He has a watch which was made in Switzerland.</div><button class="speaker-btn no-print" onclick="speak('en048')">🔊</button></div><div class="jp">彼は / 持っています / 時計を / 作られた / スイスで</div><div class="ref"><span class="grammar-tag">[関係代名詞which]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en049">The movie which I saw yesterday was very exciting.</div><button class="speaker-btn no-print" onclick="speak('en049')">🔊</button></div><div class="jp">その映画は / 私が / 見た / 昨日 / でした / とてもワクワクさせる</div><div class="ref"><span class="grammar-tag">[関係代名詞目的格]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en050">Is this the bag that you wanted?</div><button class="speaker-btn no-print" onclick="speak('en050')">🔊</button></div><div class="jp">これは / ですか / カバン / あなたが / 欲しかった</div><div class="ref"><span class="grammar-tag">[関係代名詞that]</span></div></div>
+<!-- Week 5 -->
+<div class="sheet" id="week-5">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 5 動名詞と不定詞の使い分け</div>
+        <button class="print-btn" onclick="printWeek(5)">🖨️ Week 5 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 動名詞・不定詞</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：～すること</strong><br>
+        「～すること」は to do と doing の2通りありますが、finish, stop, enjoy の後ろは必ず doing (動名詞) です。前置詞（at, in, for, of...）の後ろも必ず doing になります。
+    </div>
+
+    <div class="row">
+        <div class="en">041 Playing tennis is fun. <button class="audio-btn no-print" onclick="speak(&quot;Playing tennis is fun.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">テニスをすることは / です / 楽しい <span class="ref-info">[動名詞(主語)] テーマ50 p.112</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">042 My hobby is taking pictures. <button class="audio-btn no-print" onclick="speak(&quot;My hobby is taking pictures.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の趣味は / です / 写真を撮ること <span class="ref-info">[動名詞(補語)] テーマ50 p.112</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">043 I finished eating lunch. <button class="audio-btn no-print" onclick="speak(&quot;I finished eating lunch.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 終えました / 食べることを / 昼食を <span class="ref-info">[finish + ing] テーマ50(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">044 She stopped watching TV. <button class="audio-btn no-print" onclick="speak(&quot;She stopped watching TV.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼女は / やめました / 見ることを / テレビを <span class="ref-info">[stop + ing] テーマ50(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">045 My brother enjoys listening to music. <button class="audio-btn no-print" onclick="speak(&quot;My brother enjoys listening to music.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の兄は / 楽しみます / 聞くことを / 音楽を <span class="ref-info">[enjoy + ing] テーマ50(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">046 Thank you for helping me. <button class="audio-btn no-print" onclick="speak(&quot;Thank you for helping me.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">ありがとう / ～に対して / 手伝ってくれたこと（私を） <span class="ref-info">[前置詞 + ing] テーマ51 p.114</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">047 I am good at cooking curry. <button class="audio-btn no-print" onclick="speak(&quot;I am good at cooking curry.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / です / 上手な（得意な） / 点において / 料理すること / カレーを <span class="ref-info">[be good at ing] テーマ51 p.114</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">048 Wash your hands before eating. <button class="audio-btn no-print" onclick="speak(&quot;Wash your hands before eating.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">洗いなさい / あなたの手を / 前に / 食べる（こと） <span class="ref-info">[前置詞 + ing] テーマ51 p.114</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">049 How about going to the movies? <button class="audio-btn no-print" onclick="speak(&quot;How about going to the movies?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">どうですか / 行くことは / 映画に <span class="ref-info">[How about ing] テーマ51(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">050 I look forward to seeing you. <button class="audio-btn no-print" onclick="speak(&quot;I look forward to seeing you.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 楽しみにしています / 会うことを / あなたに <span class="ref-info">[熟語 to + ing] テーマ51(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 6</span> <span class="theme-title">第4文型・第5文型</span></div><span class="meta">No. 051-060</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en051">My father gave me a new watch.</div><button class="speaker-btn no-print" onclick="speak('en051')">🔊</button></div><div class="jp">私の父は / くれました / 私に / 新しい時計を</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en052">I will show you some pictures tomorrow.</div><button class="speaker-btn no-print" onclick="speak('en052')">🔊</button></div><div class="jp">私は / つもりです / 見せる / あなたに / 何枚かの写真を / 明日</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en053">He taught us how to use the computer.</div><button class="speaker-btn no-print" onclick="speak('en053')">🔊</button></div><div class="jp">彼は / 教えてくれました / 私たちに / 使い方を / コンピュータの</div><div class="ref"><span class="grammar-tag">[SVOO + how to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en054">Please tell me the reason why you were late.</div><button class="speaker-btn no-print" onclick="speak('en054')">🔊</button></div><div class="jp">どうか / 教えてください / 私に / 理由を / あなたが遅れた</div><div class="ref"><span class="grammar-tag">[SVOO]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en055">We call him "Ken".</div><button class="speaker-btn no-print" onclick="speak('en055')">🔊</button></div><div class="jp">私たちは / 呼びます / 彼を / 「ケン」と</div><div class="ref"><span class="grammar-tag">[SVOC(名詞)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en056">The news made us happy.</div><button class="speaker-btn no-print" onclick="speak('en056')">🔊</button></div><div class="jp">その知らせは / しました / 私たちを / 幸せな状態に</div><div class="ref"><span class="grammar-tag">[SVOC(形容詞)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en057">I found the book very interesting.</div><button class="speaker-btn no-print" onclick="speak('en057')">🔊</button></div><div class="jp">私は / わかりました / その本が / とても面白いと</div><div class="ref"><span class="grammar-tag">[SVOC(形容詞)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en058">Keep the door open, please.</div><button class="speaker-btn no-print" onclick="speak('en058')">🔊</button></div><div class="jp">しておいてください / ドアを / 開いた状態に / どうか</div><div class="ref"><span class="grammar-tag">[SVOC(状態維持)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en059">They named the baby "Hana".</div><button class="speaker-btn no-print" onclick="speak('en059')">🔊</button></div><div class="jp">彼らは / 名付けました / その赤ちゃんを / 「ハナ」と</div><div class="ref"><span class="grammar-tag">[SVOC(名付け)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en060">He left the window broken.</div><button class="speaker-btn no-print" onclick="speak('en060')">🔊</button></div><div class="jp">彼は / 放置しました / 窓を / 壊れたままに</div><div class="ref"><span class="grammar-tag">[SVOC(放置)]</span></div></div>
+<!-- Week 6 -->
+<div class="sheet" id="week-6">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 6 比較の表現</div>
+        <button class="print-btn" onclick="printWeek(6)">🖨️ Week 6 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 比較</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：比べる表現</strong><br>
+        「AとBを比べる（er / more）」、「Aが一番（the est / the most）」。「より～」と「最も～」の使い分けをマスターしましょう。長い単語（interesting, famousなど）はmore/mostを使います。
+    </div>
+
+    <div class="row">
+        <div class="en">051 This bag is bigger than that one. <button class="audio-btn no-print" onclick="speak(&quot;This bag is bigger than that one.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">このカバンは / です / より大きい / あれよりも <span class="ref-info">[比較級 -er] テーマ53 p.118</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">052 Ken is the tallest student in our class. <button class="audio-btn no-print" onclick="speak(&quot;Ken is the tallest student in our class.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">ケンは / です / 最も背が高い生徒 / 私たちのクラスの中で <span class="ref-info">[最上級 the -est] テーマ54 p.120</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">053 My father is as old as your father. <button class="audio-btn no-print" onclick="speak(&quot;My father is as old as your father.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の父は / です / 同じくらい年をとっている / あなたの父と <span class="ref-info">[同等比較 as...as] テーマ52 p.116</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">054 English is more interesting than math. <button class="audio-btn no-print" onclick="speak(&quot;English is more interesting than math.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">英語は / です / もっと面白い / 数学よりも <span class="ref-info">[比較級 more] テーマ100 p.214</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">055 This is the most famous picture in the world. <button class="audio-btn no-print" onclick="speak(&quot;This is the most famous picture in the world.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">これは / です / 最も有名な絵 / 世界中で <span class="ref-info">[最上級 the most] テーマ100 p.214</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">056 Which is larger, Japan or the UK? <button class="audio-btn no-print" onclick="speak(&quot;Which is larger, Japan or the UK?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">どちらが / ですか / より大きい / 日本とイギリスでは <span class="ref-info">[比較の疑問文] テーマ55 p.122</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">057 Who runs fastest in your family? <button class="audio-btn no-print" onclick="speak(&quot;Who runs fastest in your family?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">誰が / 走りますか / 最も速く / あなたの家族の中で <span class="ref-info">[最上級/副詞] テーマ54(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">058 I like summer the best of all seasons. <button class="audio-btn no-print" onclick="speak(&quot;I like summer the best of all seasons.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 好きです / 夏が / 一番 / すべての季節の中で <span class="ref-info">[like best] テーマ54(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">059 This question is much easier than that one. <button class="audio-btn no-print" onclick="speak(&quot;This question is much easier than that one.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">この質問（問題）は / です / ずっと簡単 / あれよりも <span class="ref-info">[比較の強調 much] テーマ100 p.214</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">060 He can swim as fast as a fish. <button class="audio-btn no-print" onclick="speak(&quot;He can swim as fast as a fish.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / 泳げます / 同じくらい速く / 魚として（魚のように） <span class="ref-info">[as...as] テーマ52 p.116</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 7</span> <span class="theme-title">It is ... (for 人) to ～ / 間接疑問</span></div><span class="meta">No. 061-070</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en061">It is important to study English every day.</div><button class="speaker-btn no-print" onclick="speak('en061')">🔊</button></div><div class="jp">（それは）大切です / 勉強することは / 英語を / 毎日</div><div class="ref"><span class="grammar-tag">[仮主語It]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en062">It is difficult for me to drive a car.</div><button class="speaker-btn no-print" onclick="speak('en062')">🔊</button></div><div class="jp">（それは）難しいです / 私にとって / 運転することは / 車を</div><div class="ref"><span class="grammar-tag">[It for to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en063">It was easy for him to solve the problem.</div><button class="speaker-btn no-print" onclick="speak('en063')">🔊</button></div><div class="jp">（それは）簡単でした / 彼にとって / 解くことは / その問題を</div><div class="ref"><span class="grammar-tag">[It for to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en064">I don't know where he lives.</div><button class="speaker-btn no-print" onclick="speak('en064')">🔊</button></div><div class="jp">私は / 知りません / どこに / 彼が住んでいるか</div><div class="ref"><span class="grammar-tag">[間接疑問(場所)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en065">Do you know what time the movie starts?</div><button class="speaker-btn no-print" onclick="speak('en065')">🔊</button></div><div class="jp">あなたは / 知っていますか / 何時に / その映画が始まるか</div><div class="ref"><span class="grammar-tag">[間接疑問(時間)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en066">Please tell me when she will come back.</div><button class="speaker-btn no-print" onclick="speak('en066')">🔊</button></div><div class="jp">どうか / 教えてください / いつ / 彼女が戻ってくるか</div><div class="ref"><span class="grammar-tag">[間接疑問(時)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en067">I want to know how he made it.</div><button class="speaker-btn no-print" onclick="speak('en067')">🔊</button></div><div class="jp">私は / 知りたい / どのようにして / 彼がそれを作ったか</div><div class="ref"><span class="grammar-tag">[間接疑問(方法)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en068">Can you tell me who that man is?</div><button class="speaker-btn no-print" onclick="speak('en068')">🔊</button></div><div class="jp">いただけますか / 教えて / 誰 / あの男が</div><div class="ref"><span class="grammar-tag">[間接疑問(人)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en069">I don't know if he will come to the party.</div><button class="speaker-btn no-print" onclick="speak('en069')">🔊</button></div><div class="jp">私は / わかりません / かどうか / 彼が来るか / パーティーに</div><div class="ref"><span class="grammar-tag">[if (～かどうか)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en070">It is necessary for you to take a rest.</div><button class="speaker-btn no-print" onclick="speak('en070')">🔊</button></div><div class="jp">（それは）必要です / あなたにとって / 休むことは</div><div class="ref"><span class="grammar-tag">[It for to]</span></div></div>
+<!-- Week 7 -->
+<div class="sheet" id="week-7">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 7 文の形（文型）</div>
+        <button class="print-btn" onclick="printWeek(7)">🖨️ Week 7 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 文型(SVOO, SVOC)</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：語順のルール</strong><br>
+        英語は語順が命です。「誰に・何を(SVOO)」、「AをBと呼ぶ(SVOC)」の形は、単語を入れ替えても崩さないようにしましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">061 My father gave me a new watch. <button class="audio-btn no-print" onclick="speak(&quot;My father gave me a new watch.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の父は / くれた / 私に / 新しい腕時計を <span class="ref-info">[SVOO/give] テーマ59 p.130</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">062 She showed us some pictures. <button class="audio-btn no-print" onclick="speak(&quot;She showed us some pictures.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼女は / 見せた / 私たちに / いくつかの写真を <span class="ref-info">[SVOO/show] テーマ59 p.130</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">063 I will teach you English. <button class="audio-btn no-print" onclick="speak(&quot;I will teach you English.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 教えるつもりです / あなたに / 英語を <span class="ref-info">[SVOO/teach] テーマ59 p.130</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">064 Please show your passport to me. <button class="audio-btn no-print" onclick="speak(&quot;Please show your passport to me.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">見せてください / あなたのパスポートを / 私に <span class="ref-info">[SVO+to] テーマ59(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">065 He bought his sister a doll. <button class="audio-btn no-print" onclick="speak(&quot;He bought his sister a doll.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / 買った / 彼の妹に / 人形を <span class="ref-info">[SVOO/buy] テーマ59(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">066 We call this dog Pochi. <button class="audio-btn no-print" onclick="speak(&quot;We call this dog Pochi.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私たちは / 呼びます / この犬を / ポチと <span class="ref-info">[SVOC/call] テーマ60 p.132</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">067 They named the baby Ken. <button class="audio-btn no-print" onclick="speak(&quot;They named the baby Ken.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼らは / 名づけた / その赤ちゃんを / ケンと <span class="ref-info">[SVOC/name] テーマ60(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">068 The news made me happy. <button class="audio-btn no-print" onclick="speak(&quot;The news made me happy.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">その知らせは / しました（させた） / 私を / 幸せに <span class="ref-info">[SVOC/make] テーマ60 p.132</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">069 She kept the room clean. <button class="audio-btn no-print" onclick="speak(&quot;She kept the room clean.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼女は / 保った / その部屋を / きれいな状態に <span class="ref-info">[SVOC/keep] テーマ60(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">070 I found this book interesting. <button class="audio-btn no-print" onclick="speak(&quot;I found this book interesting.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / わかりました（見つけた） / この本が / 面白いと <span class="ref-info">[SVOC/find] テーマ60(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 8</span> <span class="theme-title">現在完了(2) / 疑問詞+to～</span></div><span class="meta">No. 071-080</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en071">I have already finished my homework.</div><button class="speaker-btn no-print" onclick="speak('en071')">🔊</button></div><div class="jp">私は / すでに / 終えました / 宿題を</div><div class="ref"><span class="grammar-tag">[現在完了(完了)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en072">He has not arrived at the station yet.</div><button class="speaker-btn no-print" onclick="speak('en072')">🔊</button></div><div class="jp">彼は / まだ / 到着していません / 駅に</div><div class="ref"><span class="grammar-tag">[現在完了(否定)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en073">I have been to London three times.</div><button class="speaker-btn no-print" onclick="speak('en073')">🔊</button></div><div class="jp">私は / あります / 行ったことが / ロンドンへ / 3回</div><div class="ref"><span class="grammar-tag">[現在完了(経験)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en074">Has it stopped raining yet?</div><button class="speaker-btn no-print" onclick="speak('en074')">🔊</button></div><div class="jp">もう / 止みましたか / 雨が</div><div class="ref"><span class="grammar-tag">[現在完了(疑問)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en075">I don't know what to do next.</div><button class="speaker-btn no-print" onclick="speak('en075')">🔊</button></div><div class="jp">私は / わかりません / 何をすべきか / 次に</div><div class="ref"><span class="grammar-tag">[what to do]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en076">Please tell me how to get to the museum.</div><button class="speaker-btn no-print" onclick="speak('en076')">🔊</button></div><div class="jp">どうか / 教えてください / 行き方を / 美術館への</div><div class="ref"><span class="grammar-tag">[how to get]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en077">I haven't decided where to go on vacation.</div><button class="speaker-btn no-print" onclick="speak('en077')">🔊</button></div><div class="jp">私は / 決めていません / どこへ行くべきか / 休暇に</div><div class="ref"><span class="grammar-tag">[where to go]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en078">She is teaching me how to make a cake.</div><button class="speaker-btn no-print" onclick="speak('en078')">🔊</button></div><div class="jp">彼女は / 教えています / 私に / 作り方を / ケーキの</div><div class="ref"><span class="grammar-tag">[how to make]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en079">I have known him since we were children.</div><button class="speaker-btn no-print" onclick="speak('en079')">🔊</button></div><div class="jp">私は / ずっと知っています / 彼を / 私たちが子供だったときから</div><div class="ref"><span class="grammar-tag">[現在完了(継続)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en080">He has been busy since this morning.</div><button class="speaker-btn no-print" onclick="speak('en080')">🔊</button></div><div class="jp">彼は / ずっと忙しいです / 今朝から</div><div class="ref"><span class="grammar-tag">[現在完了(状態継続)]</span></div></div>
+<!-- Week 8 -->
+<div class="sheet" id="week-8">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 8 There is と受け身</div>
+        <button class="print-btn" onclick="printWeek(8)">🖨️ Week 8 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2 There is / 受動態</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：ある・いる・される</strong><br>
+        There is...は「（場所に）～がある/いる」という表現。「～される（受け身）」は「be動詞＋過去分詞」で作ります。過去分詞形をしっかり覚えましょう。
+    </div>
+
+    <div class="row">
+        <div class="en">071 There is a book on the desk. <button class="audio-btn no-print" onclick="speak(&quot;There is a book on the desk.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（そこには）あります / 1冊の本が / 机の上に <span class="ref-info">[There is] テーマ35 p.82</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">072 There are many students in the park. <button class="audio-btn no-print" onclick="speak(&quot;There are many students in the park.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（そこには）います / たくさんの生徒が / 公園に <span class="ref-info">[There are] テーマ35 p.82</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">073 This picture was painted by my father. <button class="audio-btn no-print" onclick="speak(&quot;This picture was painted by my father.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">この絵は / 描かれました / 私の父によって <span class="ref-info">[受動態/SVO] テーマ61 p.134</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">074 This room is cleaned every day. <button class="audio-btn no-print" onclick="speak(&quot;This room is cleaned every day.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">この部屋は / 掃除されます / 毎日 <span class="ref-info">[受動態] テーマ61 p.134</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">075 English is spoken in many countries. <button class="audio-btn no-print" onclick="speak(&quot;English is spoken in many countries.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">英語は / 話されています / 多くの国で <span class="ref-info">[受動態/by省略] テーマ61(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">076 I was taught English by Mr. Brown. <button class="audio-btn no-print" onclick="speak(&quot;I was taught English by Mr. Brown.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 教えられました / 英語を / ブラウン先生によって <span class="ref-info">[受動態/SVOO] テーマ62 p.136</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">077 When was this temple built? <button class="audio-btn no-print" onclick="speak(&quot;When was this temple built?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">いつ / でしたか / この寺は / 建てられた <span class="ref-info">[受動態の疑問文] テーマ64 p.140</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">078 Mt. Fuji is known to many people. <button class="audio-btn no-print" onclick="speak(&quot;Mt. Fuji is known to many people.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">富士山は / 知られています / 多くの人々に <span class="ref-info">[be known to] テーマ65 p.142</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">079 Cheese is made from milk. <button class="audio-btn no-print" onclick="speak(&quot;Cheese is made from milk.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">チーズは / 作られます / 牛乳から <span class="ref-info">[be made from] テーマ66 p.144</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">080 I was surprised at the news. <button class="audio-btn no-print" onclick="speak(&quot;I was surprised at the news.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 驚かされました（驚いた） / そのニュースに <span class="ref-info">[be surprised at] テーマ65(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-    <div class="sheet">
-    <h1><div><span class="week-label">Week 9</span> <span class="theme-title">付加疑問・否定疑問・感嘆文</span></div><span class="meta">No. 081-090</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en081">It's a beautiful day, isn't it?</div><button class="speaker-btn no-print" onclick="speak('en081')">🔊</button></div><div class="jp">いい天気ですね / そうではありませんか</div><div class="ref"><span class="grammar-tag">[付加疑問]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en082">You don't like coffee, do you?</div><button class="speaker-btn no-print" onclick="speak('en082')">🔊</button></div><div class="jp">あなたは好きではないですね / コーヒーを / そうですか</div><div class="ref"><span class="grammar-tag">[付加疑問]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en083">Don't you have a pen?</div><button class="speaker-btn no-print" onclick="speak('en083')">🔊</button></div><div class="jp">持っていないのですか / ペンを</div><div class="ref"><span class="grammar-tag">[否定疑問文]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en084">Can't you swim? --- Yes, I can.</div><button class="speaker-btn no-print" onclick="speak('en084')">🔊</button></div><div class="jp">泳げないのですか / いいえ、泳げます</div><div class="ref"><span class="grammar-tag">[否定疑問への応答]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en085">What a beautiful flower this is!</div><button class="speaker-btn no-print" onclick="speak('en085')">🔊</button></div><div class="jp">なんて / 美しい花でしょう / これは</div><div class="ref"><span class="grammar-tag">[感嘆文(What)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en086">How fast he runs!</div><button class="speaker-btn no-print" onclick="speak('en086')">🔊</button></div><div class="jp">なんて / 速く / 彼は走るのでしょう</div><div class="ref"><span class="grammar-tag">[感嘆文(How)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en087">There is a cat under the table.</div><button class="speaker-btn no-print" onclick="speak('en087')">🔊</button></div><div class="jp">います / 猫が / テーブルの下に</div><div class="ref"><span class="grammar-tag">[There is]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en088">How many students are there in your class?</div><button class="speaker-btn no-print" onclick="speak('en088')">🔊</button></div><div class="jp">何人の生徒が / いますか / あなたのクラスに</div><div class="ref"><span class="grammar-tag">[How many + are there]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en089">Would you like another cup of tea?</div><button class="speaker-btn no-print" onclick="speak('en089')">🔊</button></div><div class="jp">いかがですか / もう一杯の紅茶は</div><div class="ref"><span class="grammar-tag">[Would you like]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en090">I'm too tired to walk any further.</div><button class="speaker-btn no-print" onclick="speak('en090')">🔊</button></div><div class="jp">私は / 疲れすぎています / 歩くには / これ以上遠くへ</div><div class="ref"><span class="grammar-tag">[too too]</span></div></div>
+<!-- Week 9 -->
+<div class="sheet" id="week-9">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 9 不定詞の応用表現</div>
+        <button class="print-btn" onclick="printWeek(9)">🖨️ Week 9 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中2～中3 不定詞応用</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★今週のトレーニング：不定詞の熟語</strong><br>
+        「how to（～のやり方）」や「want 人 to（人に～してほしい）」は英検でも頻出です。また、It is... for... to（…にとって～することは…だ）の形は会話でもよく使います。
+    </div>
+
+    <div class="row">
+        <div class="en">081 I don't know how to use this computer. <button class="audio-btn no-print" onclick="speak(&quot;I don't know how to use this computer.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 知りません / 使い方（どのように使うか）を / このコンピュータの <span class="ref-info">[疑問詞+to] テーマ72 p.158</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">082 Please tell me what to do next. <button class="audio-btn no-print" onclick="speak(&quot;Please tell me what to do next.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">教えてください / 私に / 何をすべきかを / 次に <span class="ref-info">[what to do] テーマ72 p.158</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">083 It is difficult to get a perfect score. <button class="audio-btn no-print" onclick="speak(&quot;It is difficult to get a perfect score.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">それは / 難しい / 取ることは / 満点を <span class="ref-info">[It is...to] テーマ73 p.160</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">084 It is important for us to learn English. <button class="audio-btn no-print" onclick="speak(&quot;It is important for us to learn English.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">それは / 重要です / 私たちにとって / 学ぶことは / 英語を <span class="ref-info">[意味上の主語for] テーマ73(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">085 I want you to go there. <button class="audio-btn no-print" onclick="speak(&quot;I want you to go there.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / してほしい / あなたに / 行くことを / そこへ <span class="ref-info">[want O to do] テーマ74(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">086 I asked him to help me. <button class="audio-btn no-print" onclick="speak(&quot;I asked him to help me.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 頼んだ / 彼に / 手伝うように / 私を <span class="ref-info">[ask O to do] テーマ74 p.162</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">087 My mother told me to clean my room. <button class="audio-btn no-print" onclick="speak(&quot;My mother told me to clean my room.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私の母は / 言った / 私に / 掃除するように / 私の部屋を <span class="ref-info">[tell O to do] テーマ74(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">088 He is too tired to run. <button class="audio-btn no-print" onclick="speak(&quot;He is too tired to run.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / です / あまりに疲れている / 走るには（走れない） <span class="ref-info">[too...to] テーマ75 p.164</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">089 She is rich enough to buy the car. <button class="audio-btn no-print" onclick="speak(&quot;She is rich enough to buy the car.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼女は / です / 十分金持ち / 買うのに / その車を <span class="ref-info">[enough to] テーマ76 p.166</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">090 He must be a genius to solve the problem. <button class="audio-btn no-print" onclick="speak(&quot;He must be a genius to solve the problem.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">彼は / に違いない / 天才 / 解くなんて / その問題を <span class="ref-info">[判断の根拠] テーマ77 p.168</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
 </div>
 
-<div class="sheet">
-    <h1><div><span class="week-label">Week 10</span> <span class="theme-title">総復習・重要熟語</span></div><span class="meta">No. 091-100</span></h1>
-    <div class="row"><div class="en-container"><div class="en" id="en091">He is old enough to drive a car.</div><button class="speaker-btn no-print" onclick="speak('en091')">🔊</button></div><div class="jp">彼は / 十分な年齢です / 運転するのに / 車を</div><div class="ref"><span class="grammar-tag">[enough to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en092">I don't know how to use this machine.</div><button class="speaker-btn no-print" onclick="speak('en092')">🔊</button></div><div class="jp">私は / 知りません / 使い方を / この機械の</div><div class="ref"><span class="grammar-tag">[how to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en093">She is one of the most famous singers in Japan.</div><button class="speaker-btn no-print" onclick="speak('en093')">🔊</button></div><div class="jp">彼女は / です / 一人 / 最も有名な歌手の / 日本で</div><div class="ref"><span class="grammar-tag">[one of the 最上級]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en094">I'll do my best to pass the exam.</div><button class="speaker-btn no-print" onclick="speak('en094')">🔊</button></div><div class="jp">私は / つもりです / 最善を尽くす / 合格するために / 試験に</div><div class="ref"><span class="grammar-tag">[do one's best]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en095">We had a good time at the party.</div><button class="speaker-btn no-print" onclick="speak('en095')">🔊</button></div><div class="jp">私たちは / 過ごしました / 楽しい時間を / パーティーで</div><div class="ref"><span class="grammar-tag">[have a good time]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en096">I want you to help me with my homework.</div><button class="speaker-btn no-print" onclick="speak('en096')">🔊</button></div><div class="jp">私は / あなたに〜してほしい / 助ける（ことを） / 私を / 宿題で</div><div class="ref"><span class="grammar-tag">[want 人 to]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en097">Tell me what happened there.</div><button class="speaker-btn no-print" onclick="speak('en097')">🔊</button></div><div class="jp">教えてください / 何が起きたか / そこで</div><div class="ref"><span class="grammar-tag">[間接疑問(主語)]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en098">I'm sorry I'm late.</div><button class="speaker-btn no-print" onclick="speak('en098')">🔊</button></div><div class="jp">ごめんなさい / 遅れて</div><div class="ref"><span class="grammar-tag">[接続詞thatの省略]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en099">I think that this book is useful.</div><button class="speaker-btn no-print" onclick="speak('en099')">🔊</button></div><div class="jp">私は / 思います / この本は / 役に立つと</div><div class="ref"><span class="grammar-tag">[think that]</span></div></div>
-    <div class="row"><div class="en-container"><div class="en" id="en100">I enjoyed talking with you.</div><button class="speaker-btn no-print" onclick="speak('en100')">🔊</button></div><div class="jp">私は / 楽しみました / 話すことを / あなたと</div><div class="ref"><span class="grammar-tag">[enjoy + ing]</span></div></div>
+<!-- Week 10 -->
+<div class="sheet" id="week-10">
+    <div class="header-controls no-print">
+        <div class="week-title">Week 10 中1・2総復習と応用</div>
+        <button class="print-btn" onclick="printWeek(10)">🖨️ Week 10 をプリントアウト</button>
+    </div>
+    <div style="font-size:10pt; color:#666; margin-bottom:5px;">範囲：中1・2 複合問題</div>
+    <div class="name-date">名前：__________________　日付：____/____/____</div>
+    <div class="mission">
+        <strong>★Part 1 修了おめでとう！</strong><br>
+        ここまでで、中1・中2の基礎と、いくつかの発展的な表現をカバーしました。これらは英検準2級合格のための土台となります。Part 2では、いよいよ「完了形」や「関係代名詞」など、より高度な表現（中3範囲）に入っていきます。
+    </div>
 
-    <div class="advice-box">
-        <strong>1.1倍速での耳慣らし：完了！</strong><br>
-        No.001から100まで、すべての音声ボタンがつきました。このスピードで違和感なく聞き取れるようになれば、中学レベルのリスニングは完璧です。次は 101-200 にも挑戦しましょう！
+    <div class="row">
+        <div class="en">091 Why did you go to the park yesterday? <button class="audio-btn no-print" onclick="speak(&quot;Why did you go to the park yesterday?&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">なぜ / あなたは / 行きましたか / 公園へ / 昨日 <span class="ref-info">[疑問詞Why/過去] テーマ13 p.36</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">092 To meet my friend. <button class="audio-btn no-print" onclick="speak(&quot;To meet my friend.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">（それは）会うためです / 私の友だちに <span class="ref-info">[不定詞/副詞] テーマ49 p.110</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">093 Playing video games is fun for me. <button class="audio-btn no-print" onclick="speak(&quot;Playing video games is fun for me.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">テレビゲームをすることは / です / 楽しい / 私にとって <span class="ref-info">[動名詞/主語] テーマ50 p.112</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">094 I hope that you will come to the party. <button class="audio-btn no-print" onclick="speak(&quot;I hope that you will come to the party.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 望みます / （ということ）を / あなたが来るだろう / パーティーに <span class="ref-info">[接続詞that/未来] テーマ43 p.98</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">095 This computer is more expensive than that one. <button class="audio-btn no-print" onclick="speak(&quot;This computer is more expensive than that one.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">このコンピュータは / です / より高い / あれよりも <span class="ref-info">[比較級more] テーマ100 p.214</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">096 There are a lot of things to do. <button class="audio-btn no-print" onclick="speak(&quot;There are a lot of things to do.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">あります / たくさんのもの（こと）が / すべき（するための） <span class="ref-info">[There is/不定詞] テーマ35 / テーマ48</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">097 Please tell me how to get to the station. <button class="audio-btn no-print" onclick="speak(&quot;Please tell me how to get to the station.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">教えてください / 私に / 行き方（どのように着くか）を / 駅への <span class="ref-info">[SVOO/how to] テーマ59 / テーマ72</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">098 If you are busy, I will help you. <button class="audio-btn no-print" onclick="speak(&quot;If you are busy, I will help you.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">もし / あなたが忙しいなら / 私は / 手伝いましょう（意志） / あなたを <span class="ref-info">[接続詞if/未来] テーマ46 p.104</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">099 The man was taken to the hospital. <button class="audio-btn no-print" onclick="speak(&quot;The man was taken to the hospital.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">その男性は / 連れていかれました / 病院へ <span class="ref-info">[受動態/過去] テーマ61 p.134</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
+    </div>
+    <div class="row">
+        <div class="en">100 I enjoyed talking with you. <button class="audio-btn no-print" onclick="speak(&quot;I enjoyed talking with you.&quot;)" title="再生">🔊</button></div>
+        <div class="jp-process">私は / 楽しみました / 話すことを / あなたと <span class="ref-info">[enjoy + ing] テーマ50(参考)</span></div>
+        <div class="check-area no-print"><label><input type="checkbox">言えた</label><label><input type="checkbox">書けた</label></div>
+        <div class="write-space"></div>
     </div>
 </div>
 
