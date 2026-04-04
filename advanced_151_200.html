@@ -5,22 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英検応用構文ドリル (151-200) - 音声付・太字版</title>
     <style>
-        @page { size: A4; margin: 10mm; }
-        @media print { body { -webkit-print-color-adjust: exact; } .sheet { page-break-after: always; height: 98vh; } .no-print { display: none; } }
+        @page { size: A4 portrait; margin: 0; }
+        @media print { 
+            body { -webkit-print-color-adjust: exact; margin: 0; padding: 0; background: none; } 
+            .sheet { page-break-after: always; margin: 0; box-shadow: none; width: 210mm; height: 297mm; overflow: hidden; border: none; } 
+            .no-print { display: none !important; } 
+        }
         body { font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; background-color: #eee; margin: 0; padding: 20px; color: #333; }
-        .sheet { background-color: #fff; width: 210mm; min-height: 297mm; padding: 15mm; margin: 0 auto 20px auto; box-sizing: border-box; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { font-size: 14pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 12pt; }
-        .theme-title { font-size: 12pt; font-weight: bold; }
+        
+        /* A4 1枚に固定する設定 */
+        .sheet { 
+            background-color: #fff; 
+            width: 210mm; 
+            height: 297mm; /* 高さをA4ジャストに固定 */
+            padding: 12mm 15mm; /* 余白を微調整 */
+            margin: 0 auto 20px auto; 
+            box-sizing: border-box; 
+            position: relative; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            overflow: hidden; /* はみ出し防止 */
+        }
+        
+        h1 { font-size: 13pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .week-label { background: #000; color: #fff; padding: 3px 10px; border-radius: 3px; margin-right: 10px; font-size: 11pt; }
+        .theme-title { font-size: 11pt; font-weight: bold; }
         .meta { font-size: 9pt; font-weight: normal; }
-        .row { border-bottom: 1px dotted #ccc; padding: 12px 0; margin-bottom: 4px; }
-        .jp { font-size: 11pt; color: #333; margin-bottom: 8px; font-weight: bold; }
+        
+        /* 行間・余白を詰める */
+        .row { border-bottom: 1px dotted #ccc; padding: 8px 0; margin-bottom: 0; }
+        .jp { font-size: 10.5pt; color: #333; margin-bottom: 4px; font-weight: bold; }
+        
         .hint-container { display: flex; align-items: flex-start; justify-content: space-between; }
-        .hint { font-family: "Courier New", Courier, monospace; font-size: 13pt; color: #000; flex-grow: 1; line-height: 1.5; }
+        .hint { font-family: "Courier New", Courier, monospace; font-size: 12pt; color: #000; flex-grow: 1; line-height: 1.3; }
         .hint span { border-bottom: 1px solid #000; min-width: 1em; display: inline-block; text-align: center; font-weight: bold; }
-        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 16pt; color: #27ae60; padding-left: 15px; transition: transform 0.1s; }
+        
+        /* ボタンサイズの微調整 */
+        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 14pt; color: #27ae60; padding-left: 10px; transition: transform 0.1s; margin-top: -2px; }
         .speaker-btn:hover { transform: scale(1.2); }
-        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; }
+        .print-btn { position: fixed; top: 20px; right: 20px; padding: 12px 24px; background: #27ae60; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        /* アドバイスボックスの調整 */
+        .advice-box { margin-top: 15px; padding: 10px 15px; border: 1px solid #ccc; background-color: #f9f9f9; font-size: 9.5pt; line-height: 1.4; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -52,7 +77,7 @@
     <div class="row"><div class="jp">161 公園を歩いているとき、私は旧友に会いました。</div><div class="hint-container"><div class="hint"><span>W</span>•••••• <span>i</span>• <span>t</span>•• <span>p</span>•••, <span>I</span> <span>m</span>•• <span>a</span>• <span>o</span>•• <span>f</span>•••••.</div><button class="speaker-btn no-print" onclick="speak('Walking in the park, I met an old friend.')">🔊</button></div></div>
     <div class="row"><div class="jp">162 疲れを感じたので、私は早く寝ました。</div><div class="hint-container"><div class="hint"><span>F</span>•••••• <span>t</span>••••, <span>I</span> <span>w</span>••• <span>t</span>• <span>b</span>•• <span>e</span>••••.</div><button class="speaker-btn no-print" onclick="speak('Feeling tired, I went to bed early.')">🔊</button></div></div>
     <div class="row"><div class="jp">163 英語で書かれているので、この本は難しいです。</div><div class="hint-container"><div class="hint"><span>W</span>•••••• <span>i</span>• <span>E</span>••••••, <span>t</span>••• <span>b</span>••• <span>i</span>• <span>d</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('Written in English, this book is difficult.')">🔊</button></div></div>
-    <div class="row"><div class="jp">164 彼はさよならと言って、部屋を出て行きました。</div><div class="hint-container"><div class="hint"><span>S</span>••••• <span>g</span>••••••, <span>h</span>• <span>l</span>••• <span>t</span>•• <span>r</span>•••.</div><button class="speaker-btn no-print" onclick="speak('Saying goodbye, he left the room.')) ">🔊</button></div></div>
+    <div class="row"><div class="jp">164 彼はさよならと言って、部屋を出て行きました。</div><div class="hint-container"><div class="hint"><span>S</span>••••• <span>g</span>••••••, <span>h</span>• <span>l</span>••• <span>t</span>•• <span>r</span>•••.</div><button class="speaker-btn no-print" onclick="speak('Saying goodbye, he left the room.')">🔊</button></div></div>
     <div class="row"><div class="jp">165 彼女が昨日買ったのは、このカバンでした。</div><div class="hint-container"><div class="hint"><span>I</span>• <span>w</span>•• <span>t</span>••• <span>b</span>•• <span>t</span>••• <span>s</span>•• <span>b</span>••••• <span>y</span>••••••••.</div><button class="speaker-btn no-print" onclick="speak('It was this bag that she bought yesterday.')">🔊</button></div></div>
     <div class="row"><div class="jp">166 私は彼がそんなことを言ったなんて信じられません。</div><div class="hint-container"><div class="hint"><span>I</span> <span>d</span>• <span>b</span>•••••• <span>t</span>••• <span>h</span>• <span>s</span>••• <span>s</span>••• <span>a</span> <span>t</span>••••.</div><button class="speaker-btn no-print" onclick="speak('I do believe that he said such a thing.')">🔊</button></div></div>
     <div class="row"><div class="jp">167 私は一度もそんなに美しい景色を見たことがありません。</div><div class="hint-container"><div class="hint"><span>N</span>•••• <span>h</span>••• <span>I</span> <span>s</span>••• <span>s</span>••• <span>a</span> <span>b</span>•••••••• <span>s</span>••••.</div><button class="speaker-btn no-print" onclick="speak('Never have I seen such a beautiful sight.')">🔊</button></div></div>
