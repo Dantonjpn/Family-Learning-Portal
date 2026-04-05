@@ -4,21 +4,25 @@
 <meta charset="UTF-8">
 <title>特製：中学英語完成・英検準2級対策 (Week 11-20)</title>
 <style>
-    /* iPhoneの強制印字（日付・URL）よけのため、縦幅を意図的に短くする設定 */
+    /* iPhone印刷時の白紙生成バグを回避する設定 */
     @page { size: A4 portrait; margin: 0; }
     @media print { 
-        body { background-color: white; padding: 0; margin: 0; -webkit-print-color-adjust: exact; }
+        html, body { background-color: white; padding: 0; margin: 0; height: auto; -webkit-print-color-adjust: exact; }
         .sheet { 
             box-shadow: none; 
             margin: 0; 
             padding: 5mm 8mm !important; 
             border-radius: 0; 
-            height: 265mm !important; /* A4の297mmより意図的に短く */
-            max-height: 265mm !important; 
+            height: auto !important; /* 固定高さをやめて白紙生成を防ぐ */
+            max-height: 275mm !important; 
             width: 100%; 
             overflow: hidden; 
             page-break-after: always; 
             page-break-inside: avoid;
+        }
+        /* 最後のシートの後ろには改ページを入れない */
+        .sheet:last-of-type {
+            page-break-after: auto;
         }
         .no-print { display: none !important; }
     }
